@@ -1,3 +1,10 @@
 <resources>
+
+    <string name="apikey">10ac04c0-38de-11ec-b8bd-0159fdd04aed</string>
+    <string name="server_address">"https://app.sportdataapi.com/api/v1/</string>
+
     <string name="app_name">Football Manager</string>
+    <string name="exit">Exit</string>
+    <string name="settings">Country</string>
+    <string name="line">Line</string>
 </resources>
