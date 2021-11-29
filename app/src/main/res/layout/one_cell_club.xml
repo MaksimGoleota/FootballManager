@@ -3,35 +3,43 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:id="@+id/countries">
+    android:id="@+id/name">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:background="#333131">
+        android:background="#FFFFFF"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/logoClub"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#00000000"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="PrivateResource" />
 
         <TextView
-            android:id="@+id/text_view"
+            android:id="@+id/nameClub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:padding="8dp"
             android:text="@string/line"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textColorHighlight="#000000"
             android:textColorHint="#000000"
             android:textSize="18sp"
             android:textStyle="normal"
-            app:layout_constraintStart_toEndOf="@+id/id_text"
+            app:layout_constraintStart_toEndOf="@+id/delete_btn"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="UnknownId">
-        </TextView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:ignore="MissingConstraints,UnknownIdInLayout" />
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

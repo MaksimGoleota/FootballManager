@@ -1,8 +1,5 @@
 package com.merio.footballManager.domain.data.network.interceptor
 
-import android.app.Application
-import android.webkit.WebSettings
-import com.merio.footballManager.FMApplication
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException

@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.merio.footballManager.domain.dagger.factory.ViewModelFactory
 import com.merio.footballManager.domain.dagger.factory.ViewModelKey
-import com.merio.footballManager.features.country.CountryFragmentViewModel
+import com.merio.footballManager.features.leagueteams.LeagueTeamsViewModel
+import com.merio.footballManager.features.table.LeagueTableViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -17,6 +18,11 @@ interface ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(CountryFragmentViewModel::class)
-    fun countryFragmentViewModel(actorsListViewModel: CountryFragmentViewModel): ViewModel
+    @ViewModelKey(LeagueTeamsViewModel::class)
+    fun premierLeagueHomeViewModel(actorsListViewModel: LeagueTeamsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LeagueTableViewModel::class)
+    fun premierLeagueTableViewModel(actorsListViewModel: LeagueTableViewModel): ViewModel
 }

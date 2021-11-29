@@ -1,12 +1,8 @@
 package com.merio.footballManager
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {
@@ -19,24 +15,29 @@ class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.hide()
+
         val graph = navController.navInflater.inflate(R.navigation.navigation)
         navController.graph = graph
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setupWithNavController(navController)
+//        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+//        bottomNavigationView.setupWithNavController(navController)
+//
+//        hideBottomNavigation()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_tool_bar,menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.main_tool_bar,menu)
+//        return true
+//    }
 
-    fun hideBottomNavigation() {
-        findViewById<BottomNavigationView>(R.id.bottomNavigationView).visibility = View.GONE
-    }
+//    fun hideBottomNavigation() {
+//        findViewById<BottomNavigationView>(R.id.bottomNavigation).visibility = View.GONE
+//    }
+//
+//    fun showBottomNavigation() {
+//        findViewById<BottomNavigationView>(R.id.bottomNavigation).visibility = View.VISIBLE
+//    }
 
-    fun showBottomNavigation() {
-        findViewById<BottomNavigationView>(R.id.bottomNavigationView).visibility = View.VISIBLE
-    }
+
 }
-
