@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.merio.footballManager.MainActivity
+import androidx.navigation.NavDestination
+import androidx.navigation.fragment.findNavController
 import com.merio.footballManager.R
+import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
+import com.merio.footballManager.domain.data.network.api.SPAIN_ID
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment: DaggerFragment() {
 
@@ -17,7 +20,16 @@ class HomeFragment: DaggerFragment() {
     ): View? = inflater.inflate(R.layout.fragment_home, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        (activity as MainActivity).showBottomNavigation()
 
+        premierLeagueImageButton.setOnClickListener {
+            val action = HomeFragmentDirections.actionToLeagueHome()
+            action.leagueId = ENGLAND_ID
+            findNavController().navigate(action)
+        }
+
+        laLigaImageButton.setOnClickListener {
+            val action = HomeFragmentDirections.actionToLeagueHome()
+            action.leagueId = SPAIN_ID
+            findNavController().navigate(action)        }
     }
 }

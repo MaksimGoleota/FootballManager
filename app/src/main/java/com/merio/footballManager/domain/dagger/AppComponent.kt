@@ -5,6 +5,7 @@ import com.merio.footballManager.FMApplication
 import com.merio.footballManager.domain.dagger.modules.ActivityBuildersModule
 import com.merio.footballManager.domain.dagger.modules.ViewModelModule
 import com.merio.footballManager.domain.data.dagger.ApiModule
+import com.merio.footballManager.domain.data.dagger.DatabaseModule
 import com.merio.footballManager.domain.data.dagger.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
@@ -17,6 +18,7 @@ import dagger.android.support.AndroidSupportInjectionModule
         ActivityBuildersModule::class,
         NetworkModule::class,
         ApiModule::class,
+        DatabaseModule::class,
         ViewModelModule::class
     ]
 )
