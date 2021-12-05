@@ -1,4 +1,4 @@
-package com.merio.footballManager.features.table.usecase
+package com.merio.footballManager.features.leaguehome.table.usecase
 
 import com.merio.footballManager.domain.data.network.models.TableTeam
 import com.merio.footballManager.domain.data.repository.FMRepository

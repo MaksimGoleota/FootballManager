@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.merio.footballManager.features.leagueteams.LeagueTeamsFragment
-import com.merio.footballManager.features.table.LeagueTableFragment
+import com.merio.footballManager.features.leaguehome.leagueteams.LeagueTeamsFragment
+import com.merio.footballManager.features.leaguehome.table.LeagueTableFragment
 
 class LeagueHomeTabsAdapter(
     fm: FragmentManager,
@@ -31,13 +31,5 @@ class LeagueHomeTabsAdapter(
 
     override fun getCount(): Int {
         return 2
-    }
-
-    override fun getPageTitle(position: Int): CharSequence {
-        return if (position == 0) {
-            "Teams"
-        } else {
-            "Table"
-        }
     }
 }

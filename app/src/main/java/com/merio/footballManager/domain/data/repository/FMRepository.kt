@@ -1,9 +1,7 @@
 package com.merio.footballManager.domain.data.repository
 
 import com.merio.footballManager.domain.data.network.api.FMApiClient
-import com.merio.footballManager.domain.data.network.models.Standings
-import com.merio.footballManager.domain.data.network.models.Table
-import com.merio.footballManager.domain.data.network.models.Teams
+import com.merio.footballManager.domain.data.network.models.*
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -32,4 +30,34 @@ class FMRepository @Inject constructor(
                 response.data.standings
             }
     }
+
+    fun getMatches(seasonId: Int): Single<List<Matches>> {
+        return fmApiClient.getMatches(seasonId)
+            .map { response ->
+                response.data
+            }
+    }
+
+    fun getMatchEventsById(): Single<List<MatchEvents>> {
+        return fmApiClient.getMatchById()
+            .map { response ->
+                response.data.match_events
+            }
+    }
+
+    fun getMatchStatisticsById(): Single<List<MatchStatistics>> {
+        return fmApiClient.getMatchById()
+            .map { response ->
+                response.data.match_statistics
+            }
+    }
+
+    fun getMatchLineupsById(): Single<List<Lineups>> {
+        return fmApiClient.getMatchById()
+            .map { response ->
+                response.data.lineups
+            }
+    }
+
+
 }

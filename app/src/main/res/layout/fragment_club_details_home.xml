@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".features.leaguehome.LeagueHomeFragment">
+    tools:context=".features.clubdetailshome.ClubDetailsHomeFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/toolBar"
@@ -13,31 +13,28 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="horizontal"
-        tools:context=".features.leaguehome.leagueteams.LeagueTeamsFragment"
         tools:ignore="MissingConstraints">
 
         <Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolBarClubDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
 
             <ImageButton
-                android:id="@+id/logo"
+                android:id="@+id/logoClubDetails"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
-                android:src="@drawable/premierleague"
                 tools:ignore="MissingConstraints,PrivateResource" />
 
             <TextView
-                android:id="@+id/leagueName"
+                android:id="@+id/leagueNameClubDetails"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/premier_league"
                 android:textColor="#000000"
                 android:textSize="21sp"
                 android:textStyle="bold"
@@ -47,31 +44,35 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
+        android:id="@+id/tabLayoutClubDetails"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPagerTeams"
         app:tabGravity="fill"
         app:tabMode="fixed"
         android:background="#FFFFFF"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@color/red"
-        app:tabIndicatorColor="@color/black"
+        app:tabSelectedTextColor="@color/selector"
         app:tabIconTint="@color/black"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintTop_toBottomOf="@+id/toolBar">
+        app:tabTextColor="@color/black"
+        app:tabIndicatorColor="@color/black"
+        tools:ignore="MissingConstraints">
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/viewPagerTeams"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_below="@id/tabLayout"
+        android:layout_below="@id/tabLayoutClubDetails"
         android:layout_centerInParent="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayoutClubDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

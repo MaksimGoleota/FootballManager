@@ -1,4 +1,4 @@
-package com.merio.footballManager.features.table
+package com.merio.footballManager.features.leaguehome.table
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +11,9 @@ import com.merio.footballManager.domain.data.network.models.TableTeam
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.one_cell_for_table.view.*
 
-class LeagueTableAdapter:
-    RecyclerView.Adapter<LeagueTableAdapter.TableViewHolder>() {
+class LeagueTableAdapter(
+    private val itemClicks: (Int) -> Unit
+): RecyclerView.Adapter<LeagueTableAdapter.TableViewHolder>() {
 
     class TableViewHolder(View: View) : RecyclerView.ViewHolder(View) {
 
@@ -58,6 +59,9 @@ class LeagueTableAdapter:
             "Relegation" -> holder.resultLabel.setBackgroundResource(R.color.red)
         }
 
+        holder.itemView.setOnClickListener {
+            itemClicks(currentItem.team.team_id)
+        }
     }
 
     override fun getItemCount() = tableList.size

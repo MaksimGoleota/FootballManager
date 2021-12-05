@@ -16,24 +16,73 @@
     </fragment>
     <fragment
         android:id="@+id/leagueTeamsFragment"
-        android:name="com.merio.footballManager.features.leagueteams.LeagueTeamsFragment"
-        android:label="fragment_premier_league_home"
-        tools:layout="@layout/fragment_league_teams" />
+        android:name="com.merio.footballManager.features.leaguehome.leagueteams.LeagueTeamsFragment"
+        android:label="LeagueTeamsFragment"
+        tools:layout="@layout/fragment_league_teams" >
+        <action
+            android:id="@+id/action_leagueTeamsFragment_to_teamsHomeFragment"
+            app:destination="@id/clubDetailsHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/leagueTableFragment"
-        android:name="com.merio.footballManager.features.table.LeagueTableFragment"
+        android:name="com.merio.footballManager.features.leaguehome.table.LeagueTableFragment"
         android:label="fragment_premier_league_table"
-        tools:layout="@layout/fragment_league_table" />
+        tools:layout="@layout/fragment_league_table" >
+        <action
+            android:id="@+id/action_leagueTableFragment_to_teamsHomeFragment"
+            app:destination="@id/clubDetailsHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/leagueHomeFragment"
         android:name="com.merio.footballManager.features.leaguehome.LeagueHomeFragment"
         android:label="fragment_tool_bar"
         tools:layout="@layout/fragment_league_home" >
-
         <argument
-            android:name="leagueId"
+            android:name="countryId"
             app:argType="integer"
             android:defaultValue="-1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/clubDetailsHomeFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.ClubDetailsHomeFragment"
+        android:label="fragment_teams_home"
+        tools:layout="@layout/fragment_club_details_home" >
+        <argument
+            android:name="countryId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="teamId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_clubDetailsHomeFragment_to_clubDetailsFragment"
+            app:destination="@id/clubDetailsFragment" />
+        <action
+            android:id="@+id/action_clubDetailsHomeFragment_to_clubMatchesFragment"
+            app:destination="@id/clubMatchesFragment" />
+        <action
+            android:id="@+id/action_clubDetailsHomeFragment_to_clubStatisticsFragment"
+            app:destination="@id/clubStatisticsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clubDetailsFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.clubdetails.ClubDetailsFragment"
+        android:label="fragment_club_details"
+        tools:layout="@layout/fragment_club_details" >
+    </fragment>
+    <fragment
+        android:id="@+id/clubMatchesFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.clubmatches.ClubMatchesFragment"
+        android:label="fragment_club_matches"
+        tools:layout="@layout/fragment_club_matches" >
+    </fragment>
+    <fragment
+        android:id="@+id/clubStatisticsFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.clubstatistics.ClubStatisticsFragment"
+        android:label="fragment_club_statistics"
+        tools:layout="@layout/fragment_club_statistics" >
     </fragment>
 
 </navigation>
