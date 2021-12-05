@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavDestination
 import androidx.navigation.fragment.findNavController
 import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
@@ -23,13 +22,13 @@ class HomeFragment: DaggerFragment() {
 
         premierLeagueImageButton.setOnClickListener {
             val action = HomeFragmentDirections.actionToLeagueHome()
-            action.leagueId = ENGLAND_ID
+            action.countryId = ENGLAND_ID
             findNavController().navigate(action)
         }
 
         laLigaImageButton.setOnClickListener {
             val action = HomeFragmentDirections.actionToLeagueHome()
-            action.leagueId = SPAIN_ID
+            action.countryId = SPAIN_ID
             findNavController().navigate(action)        }
     }
 }

@@ -19,25 +19,5 @@ class MainActivity : DaggerAppCompatActivity() {
 
         val graph = navController.navInflater.inflate(R.navigation.navigation)
         navController.graph = graph
-
-//        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-//        bottomNavigationView.setupWithNavController(navController)
-//
-//        hideBottomNavigation()
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.main_tool_bar,menu)
-//        return true
-//    }
-
-//    fun hideBottomNavigation() {
-//        findViewById<BottomNavigationView>(R.id.bottomNavigation).visibility = View.GONE
-//    }
-//
-//    fun showBottomNavigation() {
-//        findViewById<BottomNavigationView>(R.id.bottomNavigation).visibility = View.VISIBLE
-//    }
-
-
 }

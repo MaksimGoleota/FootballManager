@@ -1,6 +1,5 @@
 package com.merio.footballManager.domain.data.repository
 
-import com.merio.footballManager.domain.data.database.Entity
 import com.merio.footballManager.domain.data.database.TeamsDatabase
 import com.merio.footballManager.domain.data.network.models.Teams
 import io.reactivex.Single

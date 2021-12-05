@@ -1,32 +1,35 @@
-package com.merio.footballManager.features.table
+package com.merio.footballManager.features.leaguehome.leagueteams
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.merio.footballManager.domain.data.network.models.TableTeam
-import com.merio.footballManager.features.table.usecase.GetTableUsecase
+import com.merio.footballManager.domain.data.network.models.Teams
+import com.merio.footballManager.domain.data.repository.FMRepository
+import com.merio.footballManager.domain.data.repository.TeamsDatabaseRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class LeagueTableViewModel @Inject constructor(
-    private val getTableUsecase : GetTableUsecase
+class LeagueTeamsViewModel @Inject constructor(
+    private val fmRepository : FMRepository,
+    private val teamsDatabaseRepository: TeamsDatabaseRepository
 ): ViewModel() {
 
-    val premierLeagueTableLiveData = MutableLiveData<List<TableTeam>>()
+    val teamsLiveData = MutableLiveData<List<Teams>>()
     private val compositeDisposable = CompositeDisposable()
 
-    fun getTable(seasonId: Int) {
+    fun getTeams(countryId: Int) {
         compositeDisposable.add(
-            getTableUsecase.execute(seasonId)
+            fmRepository.getCountryTeams(countryId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
                     Log.d("1111111111111111111", it.toString())
                 }
                 .doOnSuccess {
-                    premierLeagueTableLiveData.value = it
+                    teamsLiveData.value = it
+                    teamsDatabaseRepository.addAllTeams(it)
                 }
                 .subscribe()
         )

@@ -15,5 +15,4 @@ interface Dao {
 
     @Query("SELECT * FROM teams")
     fun getAllTeams(): Single<List<Teams>>
-
 }

@@ -1,4 +1,4 @@
-package com.merio.footballManager.features.leagueteams
+package com.merio.footballManager.features.leaguehome.leagueteams
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.one_cell_club.view.*
 
 class LeagueTeamsAdapter(
-    premierLeagueHomeFragment: LeagueTeamsFragment
+    private val itemClicks: (Int) -> Unit
 ): RecyclerView.Adapter<LeagueTeamsAdapter.TeamsViewHolder>() {
 
     class TeamsViewHolder(View: View) : RecyclerView.ViewHolder(View) {
@@ -47,6 +47,10 @@ class LeagueTeamsAdapter(
         Picasso.get()
             .load(currentItem.logo)
             .into(holder.logoClub)
+
+        holder.itemView.setOnClickListener {
+            itemClicks(currentItem.team_id)
+        }
     }
 
     override fun getItemCount() = teamsList.size
