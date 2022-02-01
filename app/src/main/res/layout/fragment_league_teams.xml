@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    android:layout_height="match_parent"
-    tools:context=".features.leaguehome.leagueteams.LeagueTeamsFragment"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTeams"
@@ -22,8 +20,8 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:indeterminateDrawable="@drawable/spinner_ring"
         android:indeterminateOnly="true"
         android:theme="@style/CircularProgress"

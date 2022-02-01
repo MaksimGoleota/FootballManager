@@ -12,8 +12,10 @@ import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
 import kotlinx.android.synthetic.main.fragment_club_details_home.*
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.merio.footballManager.features.leaguehome.NameTabs
 
-class ClubDetailsHomeFragment: Fragment() {
+class ClubDetailsHomeFragment : Fragment() {
 
     private val args: ClubDetailsHomeFragmentArgs by navArgs()
 
@@ -23,7 +25,7 @@ class ClubDetailsHomeFragment: Fragment() {
     ): View? = inflater.inflate(R.layout.fragment_club_details_home, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        when(args.countryId) {
+        when (args.countryId) {
             ENGLAND_ID -> {
                 logoClubDetails.setImageResource(R.drawable.premierleague)
                 leagueNameClubDetails.text = getString(R.string.premier_league)
@@ -34,21 +36,26 @@ class ClubDetailsHomeFragment: Fragment() {
             }
         }
 
-        viewPagerTeams.adapter = ClubDetailsTabsAdapter(requireActivity().supportFragmentManager, args.teamId, args.countryId)
-        tabLayoutClubDetails.setupWithViewPager(viewPagerTeams)
+        viewPager.adapter = ClubDetailsTabsAdapter(requireActivity(), args.countryId, args.teamId)
 
-        tabLayoutClubDetails.getTabAt(0)?.setIcon(R.drawable.ic_baseline_article_24)
-        tabLayoutClubDetails.getTabAt(1)?.setIcon(R.drawable.outline_event_note_24)
-        tabLayoutClubDetails.getTabAt(2)?.setIcon(R.drawable.ic_baseline_leaderboard_24)
+        val tabsArray = arrayOf(
+            NameTabs.DETAILS.value,
+            NameTabs.MATCHES.value,
+            NameTabs.STATISTICS.value
+        )
 
-        tabLayoutClubDetails.getTabAt(0)?.icon
-            ?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
+        TabLayoutMediator(tabLayoutClubDetails, viewPager) { tab, position ->
+            tab.text = tabsArray[position]
+            when (position) {
+                0 -> tab.setIcon(R.drawable.ic_baseline_article_24)
+                1 -> tab.setIcon(R.drawable.outline_event_note_24)
+                2 -> tab.setIcon(R.drawable.ic_baseline_leaderboard_24)
+            }
+            tabLayoutClubDetails.getTabAt(0)?.icon
+                ?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
+        }.attach()
 
-        tabLayoutClubDetails.getTabAt(0)?.text = "Details"
-        tabLayoutClubDetails.getTabAt(1)?.text = "Matches"
-        tabLayoutClubDetails.getTabAt(2)?.text = "Statistics"
-
-        tabLayoutClubDetails.addOnTabSelectedListener( object: TabLayout.OnTabSelectedListener {
+        tabLayoutClubDetails.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.icon?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
             }
@@ -56,6 +63,7 @@ class ClubDetailsHomeFragment: Fragment() {
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 tab?.icon?.setColorFilter(resources.getColor(R.color.black), PorterDuff.Mode.SRC_IN)
             }
+
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
     }

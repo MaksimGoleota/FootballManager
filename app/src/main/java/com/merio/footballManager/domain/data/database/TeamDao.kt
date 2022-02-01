@@ -8,11 +8,14 @@ import com.merio.footballManager.domain.data.network.models.Teams
 import io.reactivex.Single
 
 @Dao
-interface Dao {
+interface TeamDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addTeams(teams: List<Teams>)
 
     @Query("SELECT * FROM teams")
     fun getAllTeams(): Single<List<Teams>>
+
+    @Query("SELECT * FROM teams WHERE countryId = :countryId")
+    fun getCountryTeams(countryId: Int): Single<List<Teams>>
 }

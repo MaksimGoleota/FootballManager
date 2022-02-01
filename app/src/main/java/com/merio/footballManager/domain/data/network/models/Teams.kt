@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 data class TeamsResponse(
     val query: TeamsQuery,
-    val data: List<Teams>
+    val data: List<TeamDTO>
 )
 
 data class TeamsQuery(
@@ -21,13 +21,19 @@ class Teams(
     val name: String,
     val short_code: String,
     var logo: String?,
-    @SerializedName("country.country_id")
-    val country_id: Int
+    val countryId: Int
 ) {
     fun getFormattedProfilePath(): String? {
-        logo = logo?.replace("\\/","/", ignoreCase = false)
+        logo = logo?.replace("\\/", "/", ignoreCase = false)
         return logo
     }
 }
 
+class TeamDTO(
+    val team_id: Int,
+    val name: String,
+    val short_code: String,
+    var logo: String?,
+    val country: Country
+)
 

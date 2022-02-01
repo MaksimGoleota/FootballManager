@@ -2,10 +2,11 @@ package com.merio.footballManager.domain.dagger.modules
 
 import com.merio.footballManager.features.clubdetailshome.clubdetails.ClubDetailsFragment
 import com.merio.footballManager.features.clubdetailshome.clubmatches.ClubMatchesFragment
+import com.merio.footballManager.features.clubdetailshome.clubmatches.matchdetailshome.MatchDetailsHomeFragment
 import com.merio.footballManager.features.clubdetailshome.clubstatistics.ClubStatisticsFragment
 import com.merio.footballManager.features.home.HomeFragment
-import com.merio.footballManager.features.leaguehome.leagueteams.LeagueTeamsFragment
 import com.merio.footballManager.features.leaguehome.table.LeagueTableFragment
+import com.merio.footballManager.features.leaguehome.topscorers.TopScorersFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,10 +17,10 @@ abstract class FragmentBuildersModule {
     abstract fun contributeHomeFragment(): HomeFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeLeagueTeamsFragment(): LeagueTeamsFragment
+    abstract fun contributeLeagueTableFragment(): LeagueTableFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeLeagueTableFragment(): LeagueTableFragment
+    abstract fun contributeTopScorersFragment(): TopScorersFragment
 
     @ContributesAndroidInjector
     abstract fun contributeClubDetailsFragment(): ClubDetailsFragment
@@ -30,5 +31,7 @@ abstract class FragmentBuildersModule {
     @ContributesAndroidInjector
     abstract fun contributeClubStatisticsFragment(): ClubStatisticsFragment
 
+    @ContributesAndroidInjector
+    abstract fun contributeMatchDetailsHomeFragment(): MatchDetailsHomeFragment
 
 }

@@ -11,7 +11,7 @@ import com.merio.footballManager.domain.data.network.api.SPAIN_ID
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment: DaggerFragment() {
+class HomeFragment : DaggerFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +29,7 @@ class HomeFragment: DaggerFragment() {
         laLigaImageButton.setOnClickListener {
             val action = HomeFragmentDirections.actionToLeagueHome()
             action.countryId = SPAIN_ID
-            findNavController().navigate(action)        }
+            findNavController().navigate(action)
+        }
     }
 }

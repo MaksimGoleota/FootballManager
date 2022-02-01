@@ -16,16 +16,19 @@
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/drawable/outline_emoji_events_24.xml" value="0.290625" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/drawable/outline_event_note_24.xml" value="0.290625" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/drawable/selector.xml" value="0.290625" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout-v23/fragment_match_details_home.xml" value="0.22056159420289856" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/activity_home.xml" value="0.12" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/activity_main2.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/activity_splash_screen.xml" value="0.136" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/app_bar_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/app_bar_main2.xml" value="0.16296296296296298" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/content_layout.xml" value="0.26666666666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/content_main.xml" value="0.16574074074074074" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/content_main2.xml" value="0.27447916666666666" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_blank.xml" value="0.22056159420289856" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_club_details.xml" value="0.1671875" />
-        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_club_details_home.xml" value="0.27447916666666666" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_club_details_home.xml" value="0.15265486725663716" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_club_matches.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_club_statistics.xml" value="0.2604166666666667" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_country.xml" value="0.264" />
@@ -36,18 +39,22 @@
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_league_teams.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_leagues.xml" value="0.136" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_match_details.xml" value="0.27447916666666666" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_match_details_home.xml" value="0.264" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_premier_league_home.xml" value="0.264" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_premier_league_table.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_slideshow.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_teams_home.xml" value="0.2537037037037037" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_tool_bar.xml" value="0.27447916666666666" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/fragment_top_scorers.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/nav_header_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/nav_header_main2.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/oce_cell_matche.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_club.xml" value="0.264" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_country.xml" value="0.2" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_for_matches.xml" value="0.27447916666666666" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_for_statistics.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_for_table.xml" value="0.264" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_for_top_scorers.xml" value="0.264" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_leagues.xml" value="0.136" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_cell_match.xml" value="0.27447916666666666" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/layout/one_country.xml" value="0.13796296296296295" />
@@ -58,6 +65,7 @@
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/menu/bottom_menu.xml" value="0.264" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/menu/main.xml" value="0.16296296296296298" />
         <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/menu/main_tool_bar.xml" value="0.152" />
+        <entry key="..\:/Programming/Programs/FootballManager/app/src/main/res/xml/button_border.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>
