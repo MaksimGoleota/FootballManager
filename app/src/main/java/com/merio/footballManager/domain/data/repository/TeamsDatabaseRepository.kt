@@ -11,4 +11,7 @@ class TeamsDatabaseRepository @Inject constructor(
     fun addAllTeams(teams: List<Teams>) = database.dao().addTeams(teams)
 
     fun getAllTeams(): Single<List<Teams>> = database.dao().getAllTeams()
+
+    fun getCountryTeams(countryId: Int): Single<List<Teams>> =
+        database.dao().getCountryTeams(countryId)
 }

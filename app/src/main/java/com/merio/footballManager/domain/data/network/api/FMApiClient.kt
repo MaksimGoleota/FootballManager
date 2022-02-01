@@ -1,11 +1,9 @@
 package com.merio.footballManager.domain.data.network.api
 
-import com.merio.footballManager.domain.data.network.models.MatchByIdResponse
-import com.merio.footballManager.domain.data.network.models.MatchesResponse
-import com.merio.footballManager.domain.data.network.models.TableResponse
-import com.merio.footballManager.domain.data.network.models.TeamsResponse
+import com.merio.footballManager.domain.data.network.models.*
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface FMApiClient {
@@ -30,7 +28,14 @@ interface FMApiClient {
         @Query("season_id") seasonId: Int
     ): Single<MatchesResponse>
 
-    @GET("soccer/matches/:id")
-    fun getMatchById(): Single<MatchByIdResponse>
+    @GET("soccer/matches/{matchId}")
+    fun getMatchById(
+        @Path("matchId") matchId: Int
+    ): Single<MatchByIdResponse>
+
+    @GET("soccer/topscorers")
+    fun getTopScorers(
+        @Query("season_id") seasonId: Int
+    ): Single<TopScorersResponse>
 
 }

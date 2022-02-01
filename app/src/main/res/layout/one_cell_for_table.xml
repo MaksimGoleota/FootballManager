@@ -62,18 +62,18 @@
             app:layout_constraintEnd_toStartOf="@+id/pointsClubInTable"
             app:layout_constraintStart_toEndOf="@+id/logoClubForTable"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,UnknownIdInLayout" />
+            tools:ignore="MissingConstraints,UnknownIdInLayout"
+            tools:text="Real Madrid" />
 
         <View
             android:id="@+id/splitLine"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="46dp" />
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/pointsClubInTable"
@@ -83,8 +83,8 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

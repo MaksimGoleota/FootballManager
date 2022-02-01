@@ -11,8 +11,8 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class ClubMatchesViewModel @Inject constructor(
-    private val fmRepository : FMRepository
-): ViewModel() {
+    private val fmRepository: FMRepository
+) : ViewModel() {
 
     val matchLiveData = MutableLiveData<List<Matches>>()
     private val compositeDisposable = CompositeDisposable()
@@ -23,7 +23,7 @@ class ClubMatchesViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
-                    Log.d("1111111111111111111", it.toString())
+                    Log.d("Network error", it.toString())
                 }
                 .doOnSuccess {
                     matchLiveData.value = it.filter {

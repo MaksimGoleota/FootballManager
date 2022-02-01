@@ -1,6 +1,8 @@
 package com.merio.footballManager.domain.data.network.models
 
+import android.util.Log
 import java.text.SimpleDateFormat
+import java.util.*
 
 data class MatchesResponse(
     val query: MatchesQuery,
@@ -31,18 +33,15 @@ data class Matches(
     val stats: Stats,
     val venue: Venue
 ) {
-    fun getFormattedData(): String {
-        val format = SimpleDateFormat("EEE, dd MMM yyyy HH:mm")
-
-        val df2 = SimpleDateFormat("dd/MM/yy")
-
-        match_start = df2.format(format.parse(match_start))
-
-//        val format = SimpleDateFormat("dd/MM/yy")
-//        match_start = match_start.convertTo(format)
-
-        return match_start
-    }
+//    fun getFormattedData(): String {
+//        val format = SimpleDateFormat("EEE, dd MMM yyyy HH:mm")
+//
+//        val df2 = SimpleDateFormat("dd/MM/yy")
+//
+//        match_start = df2.format(format.parse(str))
+//
+//        return match_start
+//    }
 }
 
 data class Stage(

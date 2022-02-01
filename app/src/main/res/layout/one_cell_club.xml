@@ -32,7 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="@string/line"
             android:textColor="#000000"
             android:textColorHighlight="#000000"
             android:textColorHint="#000000"
@@ -40,6 +39,7 @@
             android:textStyle="normal"
             app:layout_constraintStart_toEndOf="@+id/delete_btn"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,UnknownIdInLayout" />
+            tools:ignore="MissingConstraints,UnknownIdInLayout"
+            tools:text="Real Madrid" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,6 +1,7 @@
 package com.merio.footballManager.features.leaguehome.table
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,12 +40,12 @@ class LeagueTableFragment : DaggerFragment() {
     ): View? = inflater.inflate(R.layout.fragment_league_table, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        when(countryId) {
+        progressBar.visibility = View.VISIBLE
+
+        when (countryId) {
             ENGLAND_ID -> mViewModel.getTable(PREMIER_LEAGUE_SEASON_ID)
             SPAIN_ID -> mViewModel.getTable(LALIGA_SEASON_ID)
         }
-
-        progressBar.visibility = View.VISIBLE
 
         val adapter = LeagueTableAdapter { teamId ->
             val bundle = Bundle().apply {
@@ -61,5 +62,10 @@ class LeagueTableFragment : DaggerFragment() {
             adapter.setData(table)
             progressBar.visibility = View.INVISIBLE
         }
+    }
+
+    override fun onResume() {
+        Log.d("Network error", "$countryId")
+        super.onResume()
     }
 }

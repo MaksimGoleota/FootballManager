@@ -1,7 +1,7 @@
 package com.merio.footballManager.domain.dagger.modules
 
 import com.merio.footballManager.MainActivity
-import com.merio.footballManager.SplashScreenActivity
+import com.merio.footballManager.features.splashscreen.SplashScreenActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -14,4 +14,7 @@ abstract class ActivityBuildersModule {
         ]
     )
     abstract fun contributeMainActivity(): MainActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeSplashScreenActivity(): SplashScreenActivity
 }

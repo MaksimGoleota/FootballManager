@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
@@ -24,7 +25,7 @@ class LeagueHomeFragment : Fragment() {
     ): View? = inflater.inflate(R.layout.fragment_league_home, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        when(args.countryId) {
+        when (args.countryId) {
             ENGLAND_ID -> {
                 logo.setImageResource(R.drawable.premierleague)
                 leagueName.text = getString(R.string.premier_league)
@@ -35,19 +36,24 @@ class LeagueHomeFragment : Fragment() {
             }
         }
 
-        viewPager.adapter = LeagueHomeTabsAdapter(requireActivity().supportFragmentManager, args.countryId)
-        tabLayout.setupWithViewPager(viewPager)
+        viewPager.adapter = LeagueHomeTabsAdapter(requireActivity(), args.countryId)
 
-        tabLayout.getTabAt(0)?.setIcon(R.drawable.outline_ballot_24)
-        tabLayout.getTabAt(1)?.setIcon(R.drawable.outline_emoji_events_24)
+        val tabsArray = arrayOf(
+            NameTabs.TABLE.value,
+            NameTabs.TOP_SCORERS.value
+        )
 
-        tabLayout.getTabAt(0)?.icon
-            ?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabsArray[position]
+            when (position) {
+                0 -> tab.setIcon(R.drawable.outline_emoji_events_24)
+                1 -> tab.setIcon(R.drawable.ic_top_scorers_24)
+            }
+            tabLayout.getTabAt(0)?.icon
+                ?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
+        }.attach()
 
-        tabLayout.getTabAt(0)?.text = "Teams"
-        tabLayout.getTabAt(1)?.text = "Table"
-
-        tabLayout.addOnTabSelectedListener( object: TabLayout.OnTabSelectedListener {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.icon?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
             }
@@ -55,8 +61,20 @@ class LeagueHomeFragment : Fragment() {
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 tab?.icon?.setColorFilter(resources.getColor(R.color.black), PorterDuff.Mode.SRC_IN)
             }
+
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
     }
 }
+
+enum class NameTabs(val value: String) {
+    TABLE("Table"),
+    TOP_SCORERS("Top scorers"),
+    DETAILS("Details"),
+    MATCHES("Matches"),
+    STATISTICS("Statistics")
+}
+
+
+
 

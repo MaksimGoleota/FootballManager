@@ -11,7 +11,9 @@ import com.merio.footballManager.domain.data.network.models.Matches
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.one_cell_for_matches.view.*
 
-class ClubMatchesAdapter: RecyclerView.Adapter<ClubMatchesAdapter.ClubMatchesViewHolder>() {
+class ClubMatchesAdapter(
+    private val itemClicks: (Int) -> Unit
+) : RecyclerView.Adapter<ClubMatchesAdapter.ClubMatchesViewHolder>() {
 
     class ClubMatchesViewHolder(View: View) : RecyclerView.ViewHolder(View) {
 
@@ -54,6 +56,11 @@ class ClubMatchesAdapter: RecyclerView.Adapter<ClubMatchesAdapter.ClubMatchesVie
         Picasso.get()
             .load(currentItem.away_team.logo)
             .into(holder.imageViewSecondTeam)
+
+        holder.itemView.setOnClickListener {
+            itemClicks(currentItem.match_id)
+        }
+
     }
 
     override fun getItemCount() = matchesList.size

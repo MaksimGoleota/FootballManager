@@ -1,35 +1,33 @@
 package com.merio.footballManager.features.leaguehome
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import com.merio.footballManager.features.leaguehome.leagueteams.LeagueTeamsFragment
+import androidx.fragment.app.*
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.merio.footballManager.features.leaguehome.table.LeagueTableFragment
+import com.merio.footballManager.features.leaguehome.topscorers.TopScorersFragment
 
-class LeagueHomeTabsAdapter(
-    fm: FragmentManager,
-    private val countryId: Int
-) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    override fun getItem(position: Int): Fragment {
+class LeagueHomeTabsAdapter(activity: FragmentActivity, private val countryId: Int) :
+    FragmentStateAdapter(activity) {
+
+    override fun createFragment(position: Int): Fragment {
         val bundle = Bundle().apply {
             putInt("countryId", countryId)
         }
         return when (position) {
             0 -> {
-                LeagueTeamsFragment().apply {
+                LeagueTableFragment().apply {
                     this.arguments = bundle
                 }
             }
             else -> {
-                LeagueTableFragment().apply {
+                TopScorersFragment().apply {
                     this.arguments = bundle
                 }
             }
         }
     }
 
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return 2
     }
 }

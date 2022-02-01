@@ -1,35 +1,32 @@
-package com.merio.footballManager.features.leaguehome.leagueteams
+package com.merio.footballManager.features.leaguehome.topscorers
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.merio.footballManager.domain.data.network.models.Teams
+import com.merio.footballManager.domain.data.network.models.TopScorers
 import com.merio.footballManager.domain.data.repository.FMRepository
-import com.merio.footballManager.domain.data.repository.TeamsDatabaseRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class LeagueTeamsViewModel @Inject constructor(
-    private val fmRepository : FMRepository,
-    private val teamsDatabaseRepository: TeamsDatabaseRepository
-): ViewModel() {
+class TopScorersViewModel @Inject constructor(
+    private val fmRepository: FMRepository
+) : ViewModel() {
 
-    val teamsLiveData = MutableLiveData<List<Teams>>()
+    val topScorersLiveData = MutableLiveData<List<TopScorers>>()
     private val compositeDisposable = CompositeDisposable()
 
-    fun getTeams(countryId: Int) {
+    fun getTopScorers(seasonId: Int) {
         compositeDisposable.add(
-            fmRepository.getCountryTeams(countryId)
+            fmRepository.getTopScorers(seasonId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
-                    Log.d("1111111111111111111", it.toString())
+                    Log.d("Network error", it.toString())
                 }
                 .doOnSuccess {
-                    teamsLiveData.value = it
-                    teamsDatabaseRepository.addAllTeams(it)
+                    topScorersLiveData.value = it
                 }
                 .subscribe()
         )

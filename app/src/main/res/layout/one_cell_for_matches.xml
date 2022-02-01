@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-
         <ImageView
             android:id="@+id/imageViewFirstTeam"
             android:layout_width="50dp"
@@ -46,7 +45,8 @@
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewFirstTeam"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            tools:text="Real Madrid" />
 
         <TextView
             android:id="@+id/textViewSecondTeam"
@@ -59,7 +59,8 @@
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewSecondTeam"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            tools:text="Barcelona" />
 
         <TextView
             android:id="@+id/textViewScore"
@@ -72,7 +73,8 @@
             android:gravity="center"
             app:layout_constraintEnd_toStartOf="@+id/imageViewSecondTeam"
             app:layout_constraintStart_toEndOf="@+id/imageViewFirstTeam"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10-0" />
 
         <TextView
             android:id="@+id/textViewDate"
@@ -83,7 +85,8 @@
             android:gravity="center"
             app:layout_constraintEnd_toStartOf="@+id/imageViewSecondTeam"
             app:layout_constraintStart_toEndOf="@+id/imageViewFirstTeam"
-            app:layout_constraintTop_toBottomOf="@+id/textViewScore" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewScore"
+            tools:text="20/11/2020" />
 
         <View
             android:id="@+id/splitLine"
@@ -96,7 +99,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.cardview.widget.CardView>

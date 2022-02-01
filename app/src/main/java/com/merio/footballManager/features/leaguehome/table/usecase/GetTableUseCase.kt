@@ -6,10 +6,10 @@ import com.merio.footballManager.domain.data.repository.TeamsDatabaseRepository
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GetTableUsecase @Inject constructor(
+class GetTableUseCase @Inject constructor(
     private val tableDatabaseRepository: TeamsDatabaseRepository,
     private val fmRepository: FMRepository
-){
+) {
     fun execute(seasonId: Int): Single<List<TableTeam>> {
         return Single.zip(
             tableDatabaseRepository.getAllTeams(),

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.one_cell_for_table.view.*
 
 class LeagueTableAdapter(
     private val itemClicks: (Int) -> Unit
-): RecyclerView.Adapter<LeagueTableAdapter.TableViewHolder>() {
+) : RecyclerView.Adapter<LeagueTableAdapter.TableViewHolder>() {
 
     class TableViewHolder(View: View) : RecyclerView.ViewHolder(View) {
 
@@ -54,9 +54,13 @@ class LeagueTableAdapter(
             .into(holder.logoClubForTable)
 
         when (currentItem.result) {
-            "Champions League" -> holder.resultLabel.setBackgroundResource(R.color.purple_700)
-            "Europa League" -> holder.resultLabel.setBackgroundResource(R.color.orange)
-            "Relegation" -> holder.resultLabel.setBackgroundResource(R.color.red)
+            Status.CHAMPIONS_LEAGUE.value -> holder.resultLabel.setBackgroundResource(R.color.purple_700)
+            Status.EUROPA_LEAGUE.value -> holder.resultLabel.setBackgroundResource(R.color.orange)
+            Status.CONFERENCE_LEAGUE_QUALIFICATION.value -> holder.resultLabel.setBackgroundResource(
+                android.R.color.holo_green_dark
+            )
+            Status.RELEGATION.value -> holder.resultLabel.setBackgroundResource(R.color.red)
+            else -> holder.resultLabel.setBackgroundResource(R.color.white)
         }
 
         holder.itemView.setOnClickListener {
@@ -65,4 +69,12 @@ class LeagueTableAdapter(
     }
 
     override fun getItemCount() = tableList.size
+}
+
+enum class Status(val value: String) {
+    CHAMPIONS_LEAGUE("Champions League"),
+    EUROPA_LEAGUE("UEFA Europa League"),
+    CONFERENCE_LEAGUE_QUALIFICATION("Conference League Qualification"),
+    RELEGATION("Relegation"),
+    WITHOUT_CHANGES("Without changes")
 }
