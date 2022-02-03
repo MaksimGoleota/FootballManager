@@ -11,7 +11,7 @@ import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.models.TableTeam
 import com.merio.footballManager.features.leaguehome.table.Status
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.one_cell_for_table.view.*
+import kotlinx.android.synthetic.main.cell_for_table.view.*
 
 class ClubDetailsAdapter(private val currentTeamId: Int) :
     RecyclerView.Adapter<ClubDetailsAdapter.TableViewHolder>() {
@@ -35,7 +35,7 @@ class ClubDetailsAdapter(private val currentTeamId: Int) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TableViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.one_cell_for_table,
+            R.layout.cell_for_table,
             parent, false
         )
         return TableViewHolder(itemView)

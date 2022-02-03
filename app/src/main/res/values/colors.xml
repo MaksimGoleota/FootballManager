@@ -11,4 +11,5 @@
     <color name="orange">#FF9100</color>
 
     <color name="my">#AFAFAF</color>
+    <color name="divider_color">#DFDBDB</color>
 </resources>

@@ -14,7 +14,6 @@ import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
 import kotlinx.android.synthetic.main.fragment_league_home.*
 
-
 class LeagueHomeFragment : Fragment() {
 
     private val args: LeagueHomeFragmentArgs by navArgs()

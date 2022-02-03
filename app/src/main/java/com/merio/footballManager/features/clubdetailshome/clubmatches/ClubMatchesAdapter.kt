@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.models.Matches
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.one_cell_for_matches.view.*
+import kotlinx.android.synthetic.main.cell_for_matches.view.*
 
 class ClubMatchesAdapter(
     private val itemClicks: (Int) -> Unit
@@ -35,7 +35,7 @@ class ClubMatchesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubMatchesViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.one_cell_for_matches,
+            R.layout.cell_for_matches,
             parent, false
         )
         return ClubMatchesViewHolder(itemView)

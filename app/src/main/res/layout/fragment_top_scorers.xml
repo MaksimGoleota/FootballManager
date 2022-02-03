@@ -12,11 +12,9 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/one_country" />
+        tools:listitem="@layout/cell_for_top_scorers" />
 
     <ProgressBar
         android:id="@+id/progressBarTopScorers"
@@ -25,7 +23,6 @@
         android:indeterminateDrawable="@drawable/spinner_ring"
         android:indeterminateOnly="true"
         android:theme="@style/CircularProgress"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

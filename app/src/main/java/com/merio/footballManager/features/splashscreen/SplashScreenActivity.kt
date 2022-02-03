@@ -2,17 +2,14 @@ package com.merio.footballManager.features.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.merio.footballManager.MainActivity
 import com.merio.footballManager.R
 import com.merio.footballManager.domain.dagger.factory.ViewModelFactory
 import com.merio.footballManager.features.splashscreen.SplashScreenViewModel.Status.*
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.fragment_league_teams.*
 import kotlinx.android.synthetic.main.splash_screen_activity.*
 import javax.inject.Inject
 
