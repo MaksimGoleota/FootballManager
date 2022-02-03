@@ -72,12 +72,12 @@ class MatchDetailsHomeFragment : DaggerFragment() {
             status.text = matchId.status
             venue.text = matchId.venue.name
 
-            btnCalendar.setOnClickListener {
-                findNavController().navigate(R.id.action_matchDetailsHomeFragment_to_clubMatchesFragment)
-            }
-            btnTable.setOnClickListener {
-                findNavController().navigate(R.id.action_matchDetailsHomeFragment_to_leagueTableFragment)
-            }
+//            btnCalendar.setOnClickListener {
+//                findNavController().navigate(R.id.action_matchDetailsHomeFragment_to_clubMatchesFragment)
+//            }
+//            btnTable.setOnClickListener {
+//                findNavController().navigate(R.id.action_matchDetailsHomeFragment_to_leagueTableFragment)
+//            }
         }
     }
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,87 +13,72 @@
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/logoFirstTeamStatistic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/layout_margin_small" />
+
+                    <TextView
+                        android:id="@+id/team_stats"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/team_stats"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSize_medium" />
+
+                    <ImageView
+                        android:id="@+id/logoSecondTeamStatistic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/layout_margin_small" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewStatistics"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/cell_for_statistics" />
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_extra_large"
                 android:indeterminateDrawable="@drawable/spinner_ring"
                 android:indeterminateOnly="true"
                 android:theme="@style/CircularProgress"
-                android:layout_marginTop="36dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/logoFirstTeamStatistic"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center" />
-
-                        <TextView
-                            android:id="@+id/team_stats"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/team_stats"
-                            android:textColor="@color/black"
-                            android:textSize="22sp" />
-
-                        <ImageView
-                            android:id="@+id/logoSecondTeamStatistic"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center" />
-
-                    </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewStatistics"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:listitem="@layout/one_country" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.appbar.AppBarLayout
@@ -132,46 +116,46 @@
                         android:id="@+id/btnCalendar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="80dp"
-                        android:layout_marginTop="50dp"
-                        android:elevation="6dp"
+                        android:layout_marginStart="@dimen/collapsing_toolbar_extra_large"
+                        android:layout_marginTop="@dimen/collapsing_toolbar_medium"
+                        android:elevation="@dimen/layout_margin_extra_small"
                         android:stateListAnimator="@null"
                         android:text="@string/calendar"
                         android:textColor="@color/black"
-                        android:translationZ="4dp"
-                        app:cornerRadius="8dp"
+                        android:translationZ="@dimen/layout_margin_extra_small"
+                        app:cornerRadius="@dimen/layout_margin_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageViewSecondTeam"
                         app:rippleColor="#33AAAAAA"
                         app:strokeColor="@color/black"
-                        app:strokeWidth="2dp" />
+                        app:strokeWidth="@dimen/layout_divider_height" />
 
                     <Button
                         android:id="@+id/btnTable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginEnd="80dp"
-                        android:elevation="6dp"
+                        android:layout_marginTop="@dimen/collapsing_toolbar_medium"
+                        android:layout_marginEnd="@dimen/collapsing_toolbar_extra_large"
+                        android:elevation="@dimen/layout_margin_extra_small"
                         android:stateListAnimator="@null"
                         android:text="@string/table"
                         android:textColor="@color/black"
-                        android:translationZ="4dp"
-                        app:cornerRadius="8dp"
+                        android:translationZ="@dimen/layout_margin_extra_small"
+                        app:cornerRadius="@dimen/layout_margin_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageViewFirstTeam"
                         app:rippleColor="#33AAAAAA"
                         app:strokeColor="@color/black"
-                        app:strokeWidth="2dp" />
+                        app:strokeWidth="@dimen/layout_divider_height" />
 
                     <ImageView
                         android:id="@+id/imageViewSecondTeam"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_width="@dimen/layout_large"
+                        android:layout_height="@dimen/layout_large"
+                        android:layout_marginTop="@dimen/collapsing_toolbar_extra_large"
+                        android:layout_marginEnd="@dimen/collapsing_toolbar_small"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints"
@@ -179,10 +163,10 @@
 
                     <ImageView
                         android:id="@+id/imageViewFirstTeam"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="80dp"
+                        android:layout_width="@dimen/layout_large"
+                        android:layout_height="@dimen/layout_large"
+                        android:layout_marginStart="@dimen/collapsing_toolbar_small"
+                        android:layout_marginTop="@dimen/collapsing_toolbar_extra_large"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints"
@@ -192,7 +176,7 @@
                         android:id="@+id/status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="@dimen/collapsing_toolbar_extra_large"
                         android:textColor="@color/my"
                         app:layout_constraintEnd_toStartOf="@+id/imageViewSecondTeam"
                         app:layout_constraintStart_toEndOf="@+id/imageViewFirstTeam"
@@ -203,9 +187,9 @@
                         android:id="@+id/score"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="@dimen/layout_margin_extra_small"
                         android:textColor="@color/black"
-                        android:textSize="30sp"
+                        android:textSize="@dimen/textSize_large"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toStartOf="@+id/imageViewSecondTeam"
                         app:layout_constraintStart_toEndOf="@+id/imageViewFirstTeam"
@@ -216,7 +200,7 @@
                         android:id="@+id/data"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="@dimen/layout_margin_small"
                         android:textColor="@color/my"
                         app:layout_constraintEnd_toStartOf="@+id/imageViewSecondTeam"
                         app:layout_constraintStart_toEndOf="@+id/imageViewFirstTeam"
@@ -238,10 +222,10 @@
                         android:id="@+id/nameFirstTeam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginStart="@dimen/collapsing_toolbar_small"
+                        android:layout_marginTop="@dimen/collapsing_toolbar_medium"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/textSize_small"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -251,15 +235,14 @@
                         android:id="@+id/nameSecondTeam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginTop="@dimen/collapsing_toolbar_medium"
+                        android:layout_marginEnd="@dimen/collapsing_toolbar_small"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/textSize_small"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Barcelona" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

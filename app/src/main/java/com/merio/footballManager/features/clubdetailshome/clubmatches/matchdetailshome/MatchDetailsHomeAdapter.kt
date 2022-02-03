@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.merio.footballManager.R
-import kotlinx.android.synthetic.main.one_cell_for_statistics.view.*
+import kotlinx.android.synthetic.main.cell_for_statistics.view.*
 
 class MatchDetailsHomeAdapter :
     RecyclerView.Adapter<MatchDetailsHomeAdapter.ClubMatchesViewHolder>() {
@@ -28,7 +28,7 @@ class MatchDetailsHomeAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubMatchesViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.one_cell_for_statistics,
+            R.layout.cell_for_statistics,
             parent, false
         )
         return ClubMatchesViewHolder(itemView)

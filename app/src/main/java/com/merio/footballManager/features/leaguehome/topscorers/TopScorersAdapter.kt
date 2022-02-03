@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.models.TopScorers
-import kotlinx.android.synthetic.main.one_cell_for_top_scorers.view.*
+import kotlinx.android.synthetic.main.cell_for_top_scorers.view.*
 
 class TopScorersAdapter : RecyclerView.Adapter<TopScorersAdapter.TopScorersViewHolder>() {
 
@@ -31,7 +31,7 @@ class TopScorersAdapter : RecyclerView.Adapter<TopScorersAdapter.TopScorersViewH
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopScorersViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.one_cell_for_top_scorers,
+            R.layout.cell_for_top_scorers,
             parent, false
         )
         return TopScorersViewHolder(itemView)

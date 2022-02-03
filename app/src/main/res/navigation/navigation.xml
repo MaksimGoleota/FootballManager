@@ -15,15 +15,6 @@
             app:destination="@id/leagueHomeFragment"/>
     </fragment>
     <fragment
-        android:id="@+id/leagueTeamsFragment"
-        android:name="com.merio.footballManager.features.leaguehome.leagueteams.LeagueTeamsFragment"
-        android:label="LeagueTeamsFragment"
-        tools:layout="@layout/fragment_league_teams" >
-        <action
-            android:id="@+id/action_leagueTeamsFragment_to_teamsHomeFragment"
-            app:destination="@id/clubDetailsHomeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/leagueTableFragment"
         android:name="com.merio.footballManager.features.leaguehome.table.LeagueTableFragment"
         android:label="fragment_premier_league_table"
@@ -32,6 +23,11 @@
             android:id="@+id/action_leagueTableFragment_to_teamsHomeFragment"
             app:destination="@id/clubDetailsHomeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/topScorersFragment"
+        android:name="com.merio.footballManager.features.leaguehome.topscorers.TopScorersFragment"
+        android:label="TopScorersFragment"
+        tools:layout="@layout/fragment_top_scorers" />
     <fragment
         android:id="@+id/leagueHomeFragment"
         android:name="com.merio.footballManager.features.leaguehome.LeagueHomeFragment"
@@ -109,9 +105,6 @@
             android:name="teamId"
             app:argType="integer"
             android:defaultValue="-1" />
-        <action
-            android:id="@+id/action_matchDetailsHomeFragment_to_leagueTableFragment"
-            app:destination="@id/leagueTableFragment" />
         <action
             android:id="@+id/action_matchDetailsHomeFragment_to_clubMatchesFragment"
             app:destination="@id/clubMatchesFragment" />

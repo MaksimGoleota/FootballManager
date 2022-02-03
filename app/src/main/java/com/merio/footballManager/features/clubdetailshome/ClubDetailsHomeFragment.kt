@@ -27,12 +27,12 @@ class ClubDetailsHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         when (args.countryId) {
             ENGLAND_ID -> {
-                logoClubDetails.setImageResource(R.drawable.premierleague)
-                leagueNameClubDetails.text = getString(R.string.premier_league)
+                logo.setImageResource(R.drawable.premierleague)
+                leagueName.text = getString(R.string.premier_league)
             }
             SPAIN_ID -> {
-                logoClubDetails.setImageResource(R.drawable.laliga)
-                leagueNameClubDetails.text = getString(R.string.laliga)
+                logo.setImageResource(R.drawable.laliga)
+                leagueName.text = getString(R.string.laliga)
             }
         }
 
