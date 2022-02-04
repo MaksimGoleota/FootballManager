@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cellDetailsTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/logoClubForTable"
+            android:layout_width="@dimen/layout_extra_small"
+            android:layout_height="@dimen/layout_extra_small"
+            android:layout_marginStart="@dimen/layout_margin_small"
+            android:layout_marginTop="@dimen/layout_margin_extra_small"
+            android:layout_marginBottom="@dimen/layout_margin_extra_small"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/positionClubInTable"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,PrivateResource"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/positionClubInTable"
+            android:layout_width="@dimen/layout_small"
+            android:layout_height="@dimen/layout_small"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/pointsClubInTable"
+            android:layout_width="@dimen/layout_small"
+            android:layout_height="@dimen/layout_small"
+            android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="99" />
+
+        <TextView
+            android:id="@+id/matchesLose"
+            android:layout_width="@dimen/layout_small"
+            android:layout_height="@dimen/layout_small"
+            android:layout_marginEnd="@dimen/layout_margin_small"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/pointsClubInTable"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/matchesDraw"
+            android:layout_width="@dimen/layout_small"
+            android:layout_height="@dimen/layout_small"
+            android:layout_marginEnd="@dimen/layout_margin_small"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/matchesLose"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="56" />
+
+        <TextView
+            android:id="@+id/matchesWin"
+            android:layout_width="@dimen/layout_small"
+            android:layout_height="@dimen/layout_small"
+            android:layout_marginEnd="@dimen/layout_margin_small"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/matchesDraw"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="86" />
+
+        <TextView
+            android:id="@+id/matchesPlayed"
+            android:layout_width="@dimen/layout_small"
+            android:layout_height="@dimen/layout_small"
+            android:layout_marginEnd="@dimen/layout_margin_small"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/matchesWin"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="99" />
+
+        <View
+            android:id="@+id/splitLine"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/layout_divider_height"
+            android:background="@color/divider_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/resultLabel"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -10,20 +10,26 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.merio.footballManager.R
+import com.merio.footballManager.databinding.FragmentLeagueHomeBinding
 import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
-import kotlinx.android.synthetic.main.fragment_league_home.*
 
 class LeagueHomeFragment : Fragment() {
 
     private val args: LeagueHomeFragmentArgs by navArgs()
 
+    private var _binding: FragmentLeagueHomeBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_league_home, container, false)
+    ): View {
+        _binding = FragmentLeagueHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         when (args.countryId) {
             ENGLAND_ID -> {
                 logo.setImageResource(R.drawable.premierleague)
@@ -63,6 +69,11 @@ class LeagueHomeFragment : Fragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 

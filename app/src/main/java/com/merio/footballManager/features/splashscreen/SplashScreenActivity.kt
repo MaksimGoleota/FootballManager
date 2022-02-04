@@ -7,10 +7,10 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.merio.footballManager.MainActivity
 import com.merio.footballManager.R
+import com.merio.footballManager.databinding.SplashScreenActivityBinding
 import com.merio.footballManager.domain.dagger.factory.ViewModelFactory
 import com.merio.footballManager.features.splashscreen.SplashScreenViewModel.Status.*
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.splash_screen_activity.*
 import javax.inject.Inject
 
 class SplashScreenActivity : DaggerAppCompatActivity() {
@@ -22,7 +22,9 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_screen_activity)
+        val binding = SplashScreenActivityBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         mViewModel =
             ViewModelProvider(this, viewModelFactory).get(SplashScreenViewModel::class.java)
@@ -30,7 +32,7 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         supportActionBar?.hide()
 
         mViewModel.statusLiveData.observe(this) { status ->
-            progressBarSplashScreen.visibility = View.GONE
+            binding.progressBarSplashScreen.visibility = View.GONE
             when (status) {
                 Completed -> {
                     val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)

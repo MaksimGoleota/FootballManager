@@ -8,10 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.merio.footballManager.R
+import com.merio.footballManager.databinding.FragmentClubMatchesBinding
 import com.merio.footballManager.domain.dagger.factory.ViewModelFactory
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_club_matches.*
-import kotlinx.android.synthetic.main.fragment_club_matches.progressBar
 import javax.inject.Inject
 
 class ClubMatchesFragment : DaggerFragment() {
@@ -24,6 +23,9 @@ class ClubMatchesFragment : DaggerFragment() {
     private var teamId: Int = -1
     private var matchId: Int = -1
 
+    private var _binding: FragmentClubMatchesBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         seasonId = arguments?.getInt("seasonId") ?: -1
@@ -35,9 +37,12 @@ class ClubMatchesFragment : DaggerFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_club_matches, container, false)
+    ): View {
+        _binding = FragmentClubMatchesBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
 
         mViewModel.getMatches(seasonId, teamId)
 
@@ -58,5 +63,10 @@ class ClubMatchesFragment : DaggerFragment() {
 
             progressBar.visibility = View.INVISIBLE
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
