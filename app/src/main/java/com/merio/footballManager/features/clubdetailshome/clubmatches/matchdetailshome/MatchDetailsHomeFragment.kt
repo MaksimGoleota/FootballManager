@@ -5,14 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.merio.footballManager.R
+import com.merio.footballManager.databinding.FragmentMatchDetailsHomeBinding
 import com.merio.footballManager.domain.dagger.factory.ViewModelFactory
 import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_match_details_home.*
-import kotlinx.android.synthetic.main.fragment_match_details_home.progressBar
 import javax.inject.Inject
 
 class MatchDetailsHomeFragment : DaggerFragment() {
@@ -24,6 +21,9 @@ class MatchDetailsHomeFragment : DaggerFragment() {
 
     private lateinit var mViewModel: MatchDetailsHomeViewModel
 
+    private var _binding: FragmentMatchDetailsHomeBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         matchId = arguments?.getInt("matchId") ?: -1
@@ -34,9 +34,12 @@ class MatchDetailsHomeFragment : DaggerFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_match_details_home, container, false)
+    ): View {
+        _binding = FragmentMatchDetailsHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         progressBar.visibility = View.VISIBLE
 
         mViewModel.getMatchInfo(matchId)
@@ -56,7 +59,7 @@ class MatchDetailsHomeFragment : DaggerFragment() {
         dataForStatisticsMatches()
     }
 
-    private fun dataForCollapsingToolbar() {
+    private fun dataForCollapsingToolbar() = with(binding) {
         mViewModel.matchInfoLiveData.observe(viewLifecycleOwner) { matchId ->
             Picasso.get()
                 .load(matchId.home_team.getFormattedProfilePath())
@@ -81,7 +84,7 @@ class MatchDetailsHomeFragment : DaggerFragment() {
         }
     }
 
-    private fun dataForStatisticsMatches() {
+    private fun dataForStatisticsMatches() = with(binding) {
 
         mViewModel.matchInfoLiveData.observe(viewLifecycleOwner) { matchId ->
             Picasso.get()
@@ -92,6 +95,11 @@ class MatchDetailsHomeFragment : DaggerFragment() {
                 .into(logoSecondTeamStatistic)
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 

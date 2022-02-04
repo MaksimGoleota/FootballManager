@@ -11,5 +11,7 @@
     <color name="orange">#FF9100</color>
 
     <color name="my">#AFAFAF</color>
+    <color name="header_color">#8A8888</color>
     <color name="divider_color">#DFDBDB</color>
+    <color name="color_cell">#EDE9E9</color>
 </resources>

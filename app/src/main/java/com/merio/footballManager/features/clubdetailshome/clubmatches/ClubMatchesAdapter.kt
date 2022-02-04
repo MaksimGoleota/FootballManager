@@ -1,29 +1,17 @@
 package com.merio.footballManager.features.clubdetailshome.clubmatches
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.merio.footballManager.R
+import com.merio.footballManager.databinding.CellForMatchesBinding
 import com.merio.footballManager.domain.data.network.models.Matches
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.cell_for_matches.view.*
 
 class ClubMatchesAdapter(
     private val itemClicks: (Int) -> Unit
 ) : RecyclerView.Adapter<ClubMatchesAdapter.ClubMatchesViewHolder>() {
 
-    class ClubMatchesViewHolder(View: View) : RecyclerView.ViewHolder(View) {
-
-        val imageViewFirstTeam: ImageView = itemView.imageViewFirstTeam
-        val imageViewSecondTeam: ImageView = itemView.imageViewSecondTeam
-        val textViewFirstTeam: TextView = itemView.textViewFirstTeam
-        val textViewSecondTeam: TextView = itemView.textViewSecondTeam
-        val textViewScore: TextView = itemView.textViewScore
-        val textViewDate: TextView = itemView.textViewDate
-    }
+    class ClubMatchesViewHolder(val binding: CellForMatchesBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val matchesList: MutableList<Matches> = mutableListOf()
 
@@ -34,33 +22,30 @@ class ClubMatchesAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubMatchesViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.cell_for_matches,
-            parent, false
-        )
-        return ClubMatchesViewHolder(itemView)
+        val binding = CellForMatchesBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+        return ClubMatchesViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ClubMatchesViewHolder, position: Int) {
+        with(holder.binding) {
+            val currentItem = matchesList[position]
+            textViewFirstTeam.text = currentItem.home_team.name
+            textViewSecondTeam.text = currentItem.away_team.name
+            textViewScore.text = currentItem.stats.ft_score
+            textViewDate.text = currentItem.match_start
 
-        val currentItem = matchesList[position]
+            Picasso.get()
+                .load(currentItem.home_team.logo)
+                .into(imageViewFirstTeam)
+            Picasso.get()
+                .load(currentItem.away_team.logo)
+                .into(imageViewSecondTeam)
 
-        holder.textViewFirstTeam.text = currentItem.home_team.name
-        holder.textViewSecondTeam.text = currentItem.away_team.name
-        holder.textViewScore.text = currentItem.stats.ft_score
-        holder.textViewDate.text = currentItem.match_start
-
-        Picasso.get()
-            .load(currentItem.home_team.logo)
-            .into(holder.imageViewFirstTeam)
-        Picasso.get()
-            .load(currentItem.away_team.logo)
-            .into(holder.imageViewSecondTeam)
-
-        holder.itemView.setOnClickListener {
-            itemClicks(currentItem.match_id)
+            holder.itemView.setOnClickListener {
+                itemClicks(currentItem.match_id)
+            }
         }
-
     }
 
     override fun getItemCount() = matchesList.size

@@ -9,13 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.merio.footballManager.R
+import com.merio.footballManager.databinding.FragmentLeagueTableBinding
 import com.merio.footballManager.domain.dagger.factory.ViewModelFactory
 import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.LALIGA_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.PREMIER_LEAGUE_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_league_table.*
 import javax.inject.Inject
 
 class LeagueTableFragment : DaggerFragment() {
@@ -27,6 +27,9 @@ class LeagueTableFragment : DaggerFragment() {
     private var countryId: Int = -1
     private var teamId: Int = -1
 
+    private var _binding: FragmentLeagueTableBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         countryId = arguments?.getInt("countryId") ?: -1
@@ -37,9 +40,12 @@ class LeagueTableFragment : DaggerFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_league_table, container, false)
+    ): View {
+        _binding = FragmentLeagueTableBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         progressBar.visibility = View.VISIBLE
 
         when (countryId) {
@@ -61,11 +67,22 @@ class LeagueTableFragment : DaggerFragment() {
         mViewModel.leagueTableLiveData.observe(viewLifecycleOwner) { table ->
             adapter.setData(table)
             progressBar.visibility = View.INVISIBLE
+
+            pointsHeader.visibility = View.VISIBLE
+            teamsHeader.visibility = View.VISIBLE
+            positionHeader.visibility = View.VISIBLE
+            splitLine.visibility = View.VISIBLE
+
         }
     }
 
     override fun onResume() {
         Log.d("Network error", "$countryId")
         super.onResume()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,7 +24,6 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="@dimen/layout_margin_small"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints"
@@ -37,34 +38,132 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails"
+                app:layout_constraintTop_toTopOf="@+id/recyclerViewClubDetails"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textViewClubDetails"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin_small"
+                android:layout_marginTop="188dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSize_medium"
-                android:layout_margin="@dimen/layout_margin_small"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageClubDetails"
                 tools:ignore="MissingConstraints"
                 tools:text="Real Madrid" />
 
+            <TextView
+                android:id="@+id/positionHeader"
+                android:layout_width="0dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin_extra_small"
+                android:padding="@dimen/layout_margin_small"
+                android:text="@string/position"
+                android:textColor="@color/header_color"
+                android:textSize="@dimen/textSize_extra_small"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerViewClubDetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/pointsHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin_extra_small"
+                android:padding="@dimen/layout_margin_small"
+                android:text="@string/points"
+                android:visibility="gone"
+                android:textColor="@color/header_color"
+                android:textSize="@dimen/textSize_extra_small"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerViewClubDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails" />
+
+
+            <TextView
+                android:id="@+id/matchesLoseHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin_extra_small"
+                android:padding="@dimen/layout_margin_small"
+                android:text="@string/lose"
+                android:visibility="gone"
+                android:textColor="@color/header_color"
+                android:textSize="@dimen/textSize_extra_small"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerViewClubDetails"
+                app:layout_constraintEnd_toStartOf="@+id/pointsHeader"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails" />
+
+            <TextView
+                android:id="@+id/matchesDrawHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin_extra_small"
+                android:padding="@dimen/layout_margin_small"
+                android:text="@string/draw"
+                android:visibility="gone"
+                android:textColor="@color/header_color"
+                android:textSize="@dimen/textSize_extra_small"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerViewClubDetails"
+                app:layout_constraintEnd_toStartOf="@+id/matchesLoseHeader"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails" />
+
+            <TextView
+                android:id="@+id/matchesWinHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin_extra_small"
+                android:padding="@dimen/layout_margin_small"
+                android:text="@string/win"
+                android:visibility="gone"
+                android:textColor="@color/header_color"
+                android:textSize="@dimen/textSize_extra_small"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerViewClubDetails"
+                app:layout_constraintEnd_toStartOf="@+id/matchesDrawHeader"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails" />
+
+            <TextView
+                android:id="@+id/matchesPlayedHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin_extra_small"
+                android:visibility="gone"
+                android:padding="@dimen/layout_margin_small"
+                android:text="@string/matches"
+                android:textColor="@color/header_color"
+                android:textSize="@dimen/textSize_extra_small"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerViewClubDetails"
+                app:layout_constraintEnd_toStartOf="@+id/matchesWinHeader"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails" />
+
+            <View
+                android:id="@+id/splitLine"
+                android:layout_width="0dp"
+                android:visibility="gone"
+                android:layout_height="@dimen/layout_divider_height"
+                android:background="@color/divider_color"
+                app:layout_constraintBottom_toBottomOf="@id/matchesPlayedHeader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewClubDetails"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewClubDetails"
-                tools:listitem="@layout/cell_for_table" />
+                app:layout_constraintTop_toBottomOf="@+id/matchesLoseHeader"
+                tools:listitem="@layout/cell_for_details_table" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

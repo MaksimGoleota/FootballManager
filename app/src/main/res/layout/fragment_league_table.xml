@@ -19,6 +19,63 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/positionHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin_extra_small"
+        android:layout_weight="1"
+        android:padding="@dimen/layout_margin_small"
+        android:text="@string/position"
+        android:textColor="@color/header_color"
+        android:textSize="@dimen/textSize_extra_small"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/pointsHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/layout_margin_extra_small"
+        android:layout_weight="1"
+        android:padding="@dimen/layout_margin_small"
+        android:text="@string/points"
+        android:textColor="@color/header_color"
+        android:textSize="@dimen/textSize_extra_small"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/teamsHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin_extra_small"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="@dimen/layout_margin_small"
+        android:text="@string/teams"
+        android:textColor="@color/header_color"
+        android:textSize="@dimen/textSize_extra_small"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/pointsHeader"
+        app:layout_constraintStart_toEndOf="@+id/positionHeader"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/splitLine"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/layout_divider_height"
+        android:background="@color/divider_color"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/teamsHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTable"
         android:layout_width="0dp"
@@ -26,7 +83,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teamsHeader"
         tools:listitem="@layout/cell_for_table" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@
         android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="@dimen/textSize_small"
+        android:layout_margin="@dimen/layout_margin_extra_small"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/totalMatches"
         app:layout_constraintStart_toEndOf="@+id/playerPositionInTheList"
@@ -40,6 +41,7 @@
         android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="@dimen/textSize_extra_small"
+        android:layout_margin="@dimen/layout_margin_extra_small"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/totalMatches"
@@ -53,6 +55,7 @@
         android:layout_width="@dimen/layout_medium"
         android:layout_height="@dimen/layout_medium"
         android:padding="@dimen/layout_margin_small"
+        android:layout_margin="@dimen/layout_margin_extra_small"
         android:textColor="@color/black"
         android:textSize="@dimen/textSize_medium"
         android:textStyle="bold"
@@ -62,40 +65,17 @@
         tools:text="12" />
 
     <TextView
-        android:id="@+id/awayGoals"
-        android:layout_width="@dimen/layout_small"
-        android:layout_height="@dimen/layout_small"
+        android:id="@+id/totalMatches"
+        android:layout_width="@dimen/layout_medium"
+        android:layout_height="@dimen/layout_medium"
         android:padding="@dimen/layout_margin_small"
         android:textColor="@color/black"
-        android:textSize="@dimen/textSize_small"
+        android:textSize="@dimen/textSize_medium"
+        android:layout_margin="@dimen/layout_margin_extra_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/totalNumberOfGoals"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="10" />
-
-    <TextView
-        android:id="@+id/totalMatches"
-        android:layout_width="@dimen/layout_small"
-        android:layout_height="@dimen/layout_small"
-        android:padding="@dimen/layout_margin_small"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textSize_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/homeGoals"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="15" />
-
-    <TextView
-        android:id="@+id/homeGoals"
-        android:layout_width="@dimen/layout_small"
-        android:layout_height="@dimen/layout_small"
-        android:padding="@dimen/layout_margin_small"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textSize_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/awayGoals"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="72" />
 
     <View
         android:id="@+id/splitLine"

@@ -110,5 +110,10 @@
             app:destination="@id/clubMatchesFragment" />
 
     </fragment>
+    <activity
+        android:id="@+id/splashScreenActivity"
+        android:name="com.merio.footballManager.features.splashscreen.SplashScreenActivity"
+        android:label="splash_screen_activity"
+        tools:layout="@layout/splash_screen_activity" />
 
 </navigation>
