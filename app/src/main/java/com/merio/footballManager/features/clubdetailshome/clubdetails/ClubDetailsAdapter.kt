@@ -31,8 +31,8 @@ class ClubDetailsAdapter(private val currentTeamId: Int) :
     }
 
     override fun onBindViewHolder(holder: TableViewHolder, position: Int) {
+        val currentItem = tableList[position]
         with(holder.binding) {
-            val currentItem = tableList[position]
             positionClubInTable.text = currentItem.position.toString()
             pointsClubInTable.text = currentItem.points.toString()
             matchesLose.text = currentItem.overall.lost.toString()
@@ -46,21 +46,10 @@ class ClubDetailsAdapter(private val currentTeamId: Int) :
 
             if (currentTeamId == currentItem.team.team_id) {
                 cellDetailsTable.setBackgroundResource(R.color.color_cell)
-                pointsClubInTable.typeface = Typeface.DEFAULT_BOLD
-                positionClubInTable.typeface = Typeface.DEFAULT_BOLD
-                matchesPlayed.typeface = Typeface.DEFAULT_BOLD
-                matchesWin.typeface = Typeface.DEFAULT_BOLD
-                matchesDraw.typeface = Typeface.DEFAULT_BOLD
-                matchesLose.typeface = Typeface.DEFAULT_BOLD
+                setItemTextTypeface(this, Typeface.DEFAULT_BOLD)
 
             } else {
-                pointsClubInTable.typeface = Typeface.DEFAULT
-                positionClubInTable.typeface = Typeface.DEFAULT
-                matchesPlayed.typeface = Typeface.DEFAULT
-                matchesWin.typeface = Typeface.DEFAULT
-                matchesDraw.typeface = Typeface.DEFAULT
-                matchesLose.typeface = Typeface.DEFAULT
-
+                setItemTextTypeface(this, Typeface.DEFAULT)
                 cellDetailsTable.setBackgroundResource(R.color.white)
             }
 
@@ -73,6 +62,17 @@ class ClubDetailsAdapter(private val currentTeamId: Int) :
                 Status.RELEGATION.value -> resultLabel.setBackgroundResource(R.color.red)
                 else -> resultLabel.setBackgroundResource(R.color.white)
             }
+        }
+    }
+
+    private fun setItemTextTypeface(binding: CellForDetailsTableBinding, typeface: Typeface) {
+        binding.apply {
+            pointsClubInTable.typeface = typeface
+            positionClubInTable.typeface = typeface
+            matchesPlayed.typeface = typeface
+            matchesWin.typeface = typeface
+            matchesDraw.typeface = typeface
+            matchesLose.typeface = typeface
         }
     }
 

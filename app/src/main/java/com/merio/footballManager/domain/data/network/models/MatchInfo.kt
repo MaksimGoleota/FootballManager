@@ -1,8 +1,8 @@
 package com.merio.footballManager.domain.data.network.models
 
 data class MatchByIdResponse(
-    val query:MatchByIdQuery,
-    val data:MatchInfo
+    val query: MatchByIdQuery,
+    val data: MatchInfo
 )
 
 data class MatchByIdQuery(

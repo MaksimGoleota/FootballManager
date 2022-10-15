@@ -1,7 +1,6 @@
 package com.merio.footballManager.features.leaguehome.table
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.LALIGA_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.PREMIER_LEAGUE_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
+import com.merio.footballManager.features.leaguehome.LeagueHomeTabsAdapter
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -25,15 +25,13 @@ class LeagueTableFragment : DaggerFragment() {
 
     private lateinit var mViewModel: LeagueTableViewModel
     private var countryId: Int = -1
-    private var teamId: Int = -1
 
     private var _binding: FragmentLeagueTableBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        countryId = arguments?.getInt("countryId") ?: -1
-        teamId = arguments?.getInt("teamId") ?: -1
+        countryId = arguments?.getInt(LeagueHomeTabsAdapter.COUNTRY_ID) ?: -1
         mViewModel = ViewModelProvider(this, viewModelFactory).get(LeagueTableViewModel::class.java)
     }
 
@@ -55,18 +53,20 @@ class LeagueTableFragment : DaggerFragment() {
 
         val adapter = LeagueTableAdapter { teamId ->
             val bundle = Bundle().apply {
-                putInt("countryId", countryId)
-                putInt("teamId", teamId)
+                putInt(COUNTRY_ID, countryId)
+                putInt(TEAM_ID, teamId)
             }
             findNavController().navigate(R.id.clubDetailsHomeFragment, bundle)
         }
-        recyclerViewTable.adapter = adapter
-        recyclerViewTable.layoutManager = LinearLayoutManager(context)
-        recyclerViewTable.setHasFixedSize(true)
+        recyclerViewTable.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+        }
 
         mViewModel.leagueTableLiveData.observe(viewLifecycleOwner) { table ->
             adapter.setData(table)
-            progressBar.visibility = View.INVISIBLE
+            progressBar.visibility = View.GONE
 
             pointsHeader.visibility = View.VISIBLE
             teamsHeader.visibility = View.VISIBLE
@@ -76,13 +76,13 @@ class LeagueTableFragment : DaggerFragment() {
         }
     }
 
-    override fun onResume() {
-        Log.d("Network error", "$countryId")
-        super.onResume()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val COUNTRY_ID = "countryId"
+        const val TEAM_ID = "teamId"
     }
 }

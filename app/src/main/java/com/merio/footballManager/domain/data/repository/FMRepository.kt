@@ -19,13 +19,6 @@ class FMRepository @Inject constructor(
             }
     }
 
-//    fun getPremierLeagueSeasons(): Single<List<Seasons>> {
-//        return fmApiClient.getSeasons(PREMIER_LEAGUE_ID)
-//            .map { response ->
-//                response.data
-//            }
-//    }
-
     fun getTable(seasonId: Int): Single<List<Standings>> {
         return fmApiClient.getTable(seasonId)
             .map { response ->
@@ -47,7 +40,7 @@ class FMRepository @Inject constructor(
             }
     }
 
-    fun getTopScorers(seasonId: Int): Single<List<TopScorers>> {
+    fun getTopScorers(seasonId: Int): Single<List<TopScorer>> {
         return fmApiClient.getTopScorers(seasonId)
             .map { response ->
                 response.data

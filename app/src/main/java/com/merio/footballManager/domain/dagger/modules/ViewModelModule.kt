@@ -7,7 +7,6 @@ import com.merio.footballManager.domain.dagger.factory.ViewModelKey
 import com.merio.footballManager.features.clubdetailshome.clubdetails.ClubDetailsViewModel
 import com.merio.footballManager.features.clubdetailshome.clubmatches.ClubMatchesViewModel
 import com.merio.footballManager.features.clubdetailshome.clubmatches.matchdetailshome.MatchDetailsHomeViewModel
-import com.merio.footballManager.features.clubdetailshome.clubstatistics.ClubStatisticsViewModel
 import com.merio.footballManager.features.leaguehome.table.LeagueTableViewModel
 import com.merio.footballManager.features.leaguehome.topscorers.TopScorersViewModel
 import com.merio.footballManager.features.splashscreen.SplashScreenViewModel
@@ -45,11 +44,6 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(ClubMatchesViewModel::class)
     fun clubMatchesViewModel(actorsListViewModel: ClubMatchesViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(ClubStatisticsViewModel::class)
-    fun clubStatisticsViewModel(actorsListViewModel: ClubStatisticsViewModel): ViewModel
 
     @Binds
     @IntoMap

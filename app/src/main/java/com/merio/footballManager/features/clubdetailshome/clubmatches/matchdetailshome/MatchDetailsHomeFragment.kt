@@ -26,7 +26,7 @@ class MatchDetailsHomeFragment : DaggerFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        matchId = arguments?.getInt("matchId") ?: -1
+        matchId = arguments?.getInt(MATCH_ID) ?: -1
         mViewModel =
             ViewModelProvider(this, viewModelFactory).get(MatchDetailsHomeViewModel::class.java)
     }
@@ -45,18 +45,20 @@ class MatchDetailsHomeFragment : DaggerFragment() {
         mViewModel.getMatchInfo(matchId)
 
         val adapter = MatchDetailsHomeAdapter()
-        recyclerViewStatistics.adapter = adapter
-        recyclerViewStatistics.layoutManager = LinearLayoutManager(context)
-        recyclerViewStatistics.setHasFixedSize(true)
+        recyclerViewStatistics.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+        }
 
         mViewModel.statisticsLiveData.observe(viewLifecycleOwner) { matchStatistics ->
             adapter.setData(matchStatistics)
-            progressBar.visibility = View.INVISIBLE
+            progressBar.visibility = View.GONE
             linearLayout.visibility = View.VISIBLE
         }
 
         dataForCollapsingToolbar()
-        dataForStatisticsMatches()
+        matchStatisticHeader()
     }
 
     private fun dataForCollapsingToolbar() = with(binding) {
@@ -75,17 +77,10 @@ class MatchDetailsHomeFragment : DaggerFragment() {
             status.text = matchId.status
             venue.text = matchId.venue.name
 
-//            btnCalendar.setOnClickListener {
-//                findNavController().navigate(R.id.action_matchDetailsHomeFragment_to_clubMatchesFragment)
-//            }
-//            btnTable.setOnClickListener {
-//                findNavController().navigate(R.id.action_matchDetailsHomeFragment_to_leagueTableFragment)
-//            }
         }
     }
 
-    private fun dataForStatisticsMatches() = with(binding) {
-
+    private fun matchStatisticHeader() = with(binding) {
         mViewModel.matchInfoLiveData.observe(viewLifecycleOwner) { matchId ->
             Picasso.get()
                 .load(matchId.home_team.getFormattedProfilePath())
@@ -100,6 +95,10 @@ class MatchDetailsHomeFragment : DaggerFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val MATCH_ID = "matchId"
     }
 }
 

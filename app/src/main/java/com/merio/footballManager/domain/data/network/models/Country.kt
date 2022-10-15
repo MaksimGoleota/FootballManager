@@ -10,8 +10,8 @@ data class CountryQuery(
 )
 
 data class Country(
-    val country_id: Int,
-    val name_country: String,
+    val id: Int,
+    val name: String,
     val country_code: String?,
     val continent: String
 )

@@ -23,15 +23,13 @@ class TopScorersFragment : DaggerFragment() {
 
     private lateinit var mViewModel: TopScorersViewModel
     private var countryId: Int = -1
-    private var teamId: Int = -1
 
     private var _binding: FragmentTopScorersBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        countryId = arguments?.getInt("countryId") ?: -1
-        teamId = arguments?.getInt("teamId") ?: -1
+        countryId = arguments?.getInt(COUNTRY_ID) ?: -1
         mViewModel = ViewModelProvider(this, viewModelFactory).get(TopScorersViewModel::class.java)
     }
 
@@ -44,21 +42,24 @@ class TopScorersFragment : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+        progressBarTopScorers.visibility = View.VISIBLE
+
         when (countryId) {
             ENGLAND_ID -> mViewModel.getTopScorers(PREMIER_LEAGUE_SEASON_ID)
             SPAIN_ID -> mViewModel.getTopScorers(LALIGA_SEASON_ID)
         }
 
-        progressBarTopScorers.visibility = View.VISIBLE
-
         val adapter = TopScorersAdapter()
-        recyclerViewTopScorers.adapter = adapter
-        recyclerViewTopScorers.layoutManager = LinearLayoutManager(context)
-        recyclerViewTopScorers.setHasFixedSize(true)
+
+        recyclerViewTopScorers.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+        }
 
         mViewModel.topScorersLiveData.observe(viewLifecycleOwner) { table ->
             adapter.setData(table)
-            progressBarTopScorers.visibility = View.INVISIBLE
+            progressBarTopScorers.visibility = View.GONE
 
             positionHeader.visibility = View.VISIBLE
             playersHeader.visibility = View.VISIBLE
@@ -71,5 +72,9 @@ class TopScorersFragment : DaggerFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val COUNTRY_ID = "countryId"
     }
 }

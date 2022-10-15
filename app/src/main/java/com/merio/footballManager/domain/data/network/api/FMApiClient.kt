@@ -13,11 +13,6 @@ interface FMApiClient {
         @Query("country_id") countryId: Int
     ): Single<TeamsResponse>
 
-//    @GET("soccer/seasons")
-//    fun getSeasons(
-//        @Query("league_id" ) leagueId: Int
-//    ): Single<SeasonsResponse>
-
     @GET("soccer/standings")
     fun getTable(
         @Query("season_id") seasonId: Int
@@ -37,5 +32,4 @@ interface FMApiClient {
     fun getTopScorers(
         @Query("season_id") seasonId: Int
     ): Single<TopScorersResponse>
-
 }

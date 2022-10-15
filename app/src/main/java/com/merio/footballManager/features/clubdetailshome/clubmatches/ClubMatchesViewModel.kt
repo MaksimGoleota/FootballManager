@@ -3,6 +3,7 @@ package com.merio.footballManager.features.clubdetailshome.clubmatches
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.models.Matches
 import com.merio.footballManager.domain.data.repository.FMRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,7 +24,7 @@ class ClubMatchesViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
-                    Log.d("Network error", it.toString())
+                    Log.d(R.string.Network_error.toString(), it.toString())
                 }
                 .doOnSuccess {
                     matchLiveData.value = it.filter {

@@ -12,6 +12,8 @@ import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.LALIGA_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.PREMIER_LEAGUE_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
+import com.merio.footballManager.features.clubdetailshome.ClubDetailsTabsAdapter.Companion.COUNTRY_ID
+import com.merio.footballManager.features.clubdetailshome.ClubDetailsTabsAdapter.Companion.TEAM_ID
 import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -31,8 +33,8 @@ class ClubDetailsFragment : DaggerFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        countryId = arguments?.getInt("countryId") ?: -1
-        teamId = arguments?.getInt("teamId") ?: -1
+        countryId = arguments?.getInt(COUNTRY_ID) ?: -1
+        teamId = arguments?.getInt(TEAM_ID) ?: -1
         mViewModel = ViewModelProvider(this, viewModelFactory).get(ClubDetailsViewModel::class.java)
     }
 
@@ -45,8 +47,9 @@ class ClubDetailsFragment : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
-        mViewModel.getDetails(teamId)
+        progressBar.visibility = View.VISIBLE
 
+        mViewModel.getDetails(teamId)
         mViewModel.leagueTeamsLiveData.observe(viewLifecycleOwner) { team ->
             Picasso.get()
                 .load(team.getFormattedProfilePath())
@@ -59,16 +62,16 @@ class ClubDetailsFragment : DaggerFragment() {
             SPAIN_ID -> mViewModel.getTable(LALIGA_SEASON_ID)
         }
 
-        progressBar.visibility = View.VISIBLE
-
         val adapter = ClubDetailsAdapter(teamId)
-        recyclerViewClubDetails.adapter = adapter
-        recyclerViewClubDetails.layoutManager = LinearLayoutManager(context)
-        recyclerViewClubDetails.setHasFixedSize(true)
+        recyclerViewClubDetails.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+        }
 
         mViewModel.leagueTableLiveData.observe(viewLifecycleOwner) { table ->
             adapter.setData(table)
-            progressBar.visibility = View.INVISIBLE
+            progressBar.visibility = View.GONE
 
             pointsHeader.visibility = View.VISIBLE
             positionHeader.visibility = View.VISIBLE

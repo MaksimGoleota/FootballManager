@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/match"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:padding="@dimen/layout_margin_extra_small">
 
         <ImageView
             android:id="@+id/imageViewFirstTeam"
             android:layout_width="@dimen/layout_medium"
             android:layout_height="@dimen/layout_medium"
-            android:layout_marginStart="@dimen/layout_margin_extra_large"
+            android:layout_marginStart="@dimen/collapsing_toolbar_small"
             android:layout_marginTop="@dimen/layout_margin_extra_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +29,7 @@
             android:layout_width="@dimen/layout_medium"
             android:layout_height="@dimen/layout_medium"
             android:layout_marginTop="@dimen/layout_margin_extra_small"
-            android:layout_marginEnd="@dimen/layout_margin_extra_large"
+            android:layout_marginEnd="@dimen/collapsing_toolbar_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
@@ -37,11 +39,15 @@
             android:id="@+id/textViewFirstTeam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_medium"
+            android:layout_marginStart="@dimen/layout_margin_extra_small"
             android:layout_marginTop="@dimen/layout_margin_small"
+            android:gravity="start"
+            android:padding="@dimen/layout_margin_extra_small"
+            android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="@dimen/textSize_small"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textViewScore"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewFirstTeam"
             tools:text="Real Madrid" />
@@ -51,12 +57,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_margin_small"
-            android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:layout_marginEnd="@dimen/layout_margin_extra_small"
+            android:gravity="end"
+            android:padding="@dimen/layout_margin_extra_small"
+            android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="@dimen/textSize_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewScore"
             app:layout_constraintTop_toBottomOf="@+id/imageViewSecondTeam"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints"
             tools:text="Barcelona" />
 
@@ -64,7 +75,7 @@
             android:id="@+id/textViewScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_margin_small"
+            android:layout_marginTop="@dimen/layout_margin_extra_small"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="@dimen/textSize_large"
@@ -85,18 +96,6 @@
             app:layout_constraintStart_toEndOf="@+id/imageViewFirstTeam"
             app:layout_constraintTop_toBottomOf="@+id/textViewScore"
             tools:text="20/11/2020" />
-
-        <View
-            android:id="@+id/splitLine"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/layout_divider_height"
-            android:layout_marginStart="@dimen/layout_margin_small"
-            android:layout_marginEnd="@dimen/layout_margin_small"
-            android:background="@color/divider_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

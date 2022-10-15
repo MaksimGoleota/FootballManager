@@ -12,7 +12,7 @@ class TeamMapper @Inject constructor() {
                 name = it.name,
                 short_code = it.short_code,
                 logo =  it.logo,
-                countryId = it.country.country_id
+                countryId = it.country.id
             )
         }
     }

@@ -9,7 +9,6 @@ import com.merio.footballManager.domain.data.network.api.LALIGA_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.PREMIER_LEAGUE_SEASON_ID
 import com.merio.footballManager.features.clubdetailshome.clubdetails.ClubDetailsFragment
 import com.merio.footballManager.features.clubdetailshome.clubmatches.ClubMatchesFragment
-import com.merio.footballManager.features.clubdetailshome.clubstatistics.ClubStatisticsFragment
 
 class ClubDetailsTabsAdapter(
     activity: FragmentActivity,
@@ -21,34 +20,37 @@ class ClubDetailsTabsAdapter(
         return when (position) {
             0 -> {
                 val bundle = Bundle().apply {
-                    putInt("teamId", teamId)
-                    putInt("countryId", countryId)
+                    putInt(TEAM_ID, teamId)
+                    putInt(COUNTRY_ID, countryId)
                 }
                 ClubDetailsFragment().apply {
                     this.arguments = bundle
                 }
             }
-            1 -> {
+            else -> {
                 val bundle = Bundle().apply {
                     putInt(
-                        "seasonId",
+                        SEASON_ID,
                         if (countryId == ENGLAND_ID) PREMIER_LEAGUE_SEASON_ID else LALIGA_SEASON_ID
                     )
-                    putInt("teamId", teamId)
+                    putInt(TEAM_ID, teamId)
                 }
                 ClubMatchesFragment().apply {
                     this.arguments = bundle
-                }
-            }
-            else -> {
-                ClubStatisticsFragment().apply {
-//                    this.arguments = bundle
                 }
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return tabNames.size
+    }
+
+    companion object {
+        const val COUNTRY_ID = "countryId"
+        const val TEAM_ID = "teamId"
+        const val SEASON_ID = "seasonId"
+
+        val tabNames = arrayOf("Details", "Matches")
     }
 }

@@ -11,7 +11,7 @@ class LeagueHomeTabsAdapter(activity: FragmentActivity, private val countryId: I
 
     override fun createFragment(position: Int): Fragment {
         val bundle = Bundle().apply {
-            putInt("countryId", countryId)
+            putInt(COUNTRY_ID, countryId)
         }
         return when (position) {
             0 -> {
@@ -28,6 +28,12 @@ class LeagueHomeTabsAdapter(activity: FragmentActivity, private val countryId: I
     }
 
     override fun getItemCount(): Int {
-        return 2
+        return tabNames.size
+    }
+
+    companion object {
+        const val COUNTRY_ID = "countryId"
+
+        val tabNames = arrayOf("Table", "Top scorers")
     }
 }
