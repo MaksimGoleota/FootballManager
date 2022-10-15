@@ -27,7 +27,11 @@
         android:id="@+id/topScorersFragment"
         android:name="com.merio.footballManager.features.leaguehome.topscorers.TopScorersFragment"
         android:label="TopScorersFragment"
-        tools:layout="@layout/fragment_top_scorers" />
+        tools:layout="@layout/fragment_top_scorers" >
+        <action
+            android:id="@+id/action_topScorersFragment_to_leagueHomeFragment"
+            app:destination="@id/leagueHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/leagueHomeFragment"
         android:name="com.merio.footballManager.features.leaguehome.LeagueHomeFragment"
@@ -37,6 +41,12 @@
             android:name="countryId"
             app:argType="integer"
             android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_leagueHomeFragment_to_leagueTableFragment"
+            app:destination="@id/leagueTableFragment" />
+        <action
+            android:id="@+id/action_leagueHomeFragment_to_topScorersFragment"
+            app:destination="@id/topScorersFragment" />
     </fragment>
 
     <fragment
@@ -86,12 +96,6 @@
             app:destination="@id/matchDetailsHomeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/clubStatisticsFragment"
-        android:name="com.merio.footballManager.features.clubdetailshome.clubstatistics.ClubStatisticsFragment"
-        android:label="fragment_club_statistics"
-        tools:layout="@layout/fragment_club_statistics" >
-    </fragment>
-    <fragment
         android:id="@+id/matchDetailsHomeFragment"
         android:name="com.merio.footballManager.features.clubdetailshome.clubmatches.matchdetailshome.MatchDetailsHomeFragment"
         android:label="MatchDetailsHomeFragment"
@@ -115,5 +119,4 @@
         android:name="com.merio.footballManager.features.splashscreen.SplashScreenActivity"
         android:label="splash_screen_activity"
         tools:layout="@layout/splash_screen_activity" />
-
 </navigation>

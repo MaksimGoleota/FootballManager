@@ -18,11 +18,11 @@ data class Table(
 )
 
 data class Standings(
-    val team_id:Int,
-    val position:Int,
-    val points:Int,
-    val status:String,
-    val result:String?,
+    val team_id: Int,
+    val position: Int,
+    val points: Int,
+    val status: String,
+    val result: String?,
     val overall: Overall,
     val home: Home,
     val away: Away
@@ -30,10 +30,10 @@ data class Standings(
 
 data class TableTeam(
     val team: Teams,
-    val position:Int,
-    val points:Int,
-    val status:String,
-    val result:String?,
+    val position: Int,
+    val points: Int,
+    val status: String,
+    val result: String?,
     val overall: Overall,
     val home: Home,
     val away: Away

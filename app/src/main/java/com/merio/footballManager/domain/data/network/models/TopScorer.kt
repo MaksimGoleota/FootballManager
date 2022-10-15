@@ -2,7 +2,7 @@ package com.merio.footballManager.domain.data.network.models
 
 data class TopScorersResponse(
     val query: TopScorersQuery,
-    val data: List<TopScorers>
+    val data: List<TopScorer>
 )
 
 data class TopScorersQuery(
@@ -10,7 +10,7 @@ data class TopScorersQuery(
     val season_id: Int
 )
 
-data class TopScorers(
+data class TopScorer(
     val pos: Int,
     val player: Player,
     val team: Team,

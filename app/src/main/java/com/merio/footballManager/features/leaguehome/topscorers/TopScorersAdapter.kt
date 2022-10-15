@@ -4,17 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.merio.footballManager.databinding.CellForTopScorersBinding
-import com.merio.footballManager.domain.data.network.models.TopScorers
+import com.merio.footballManager.domain.data.network.models.TopScorer
 
-class TopScorersAdapter : RecyclerView.Adapter<TopScorersAdapter.TopScorersViewHolder>() {
+class TopScorersAdapter(
+    private val itemClicks: (Int) -> Unit
+) : RecyclerView.Adapter<TopScorersAdapter.TopScorersViewHolder>() {
 
-    class TopScorersViewHolder(val binding: CellForTopScorersBinding) : RecyclerView.ViewHolder(binding.root)
+    class TopScorersViewHolder(val binding: CellForTopScorersBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
-    private val topScorersList: MutableList<TopScorers> = mutableListOf()
+    private val topScorerList: MutableList<TopScorer> = mutableListOf()
 
-    fun setData(table: List<TopScorers>) {
-        topScorersList.clear()
-        topScorersList.addAll(table)
+    fun setData(table: List<TopScorer>) {
+        topScorerList.clear()
+        topScorerList.addAll(table)
         notifyDataSetChanged()
     }
 
@@ -25,15 +28,18 @@ class TopScorersAdapter : RecyclerView.Adapter<TopScorersAdapter.TopScorersViewH
     }
 
     override fun onBindViewHolder(holder: TopScorersViewHolder, position: Int) {
-        with(holder) {
-            val currentItem = topScorersList[position]
-            binding.playerPositionInTheList.text = currentItem.pos.toString()
-            binding.namePlayer.text = currentItem.player.player_name
-            binding.nameClub.text = currentItem.team.team_name
-            binding.totalMatches.text = currentItem.matches_played.toString()
-            binding.totalNumberOfGoals.text = currentItem.goals.overall.toString()
+        val currentItem = topScorerList[position]
+        with(holder.binding) {
+            playerPositionInTheList.text = currentItem.pos.toString()
+            namePlayer.text = currentItem.player.player_name
+            nameClub.text = currentItem.team.team_name
+            totalMatches.text = currentItem.matches_played.toString()
+            totalNumberOfGoals.text = currentItem.goals.overall.toString()
+        }
+        holder.itemView.setOnClickListener {
+            itemClicks(currentItem.player.player_id)
         }
     }
 
-    override fun getItemCount() = topScorersList.size
+    override fun getItemCount() = topScorerList.size
 }

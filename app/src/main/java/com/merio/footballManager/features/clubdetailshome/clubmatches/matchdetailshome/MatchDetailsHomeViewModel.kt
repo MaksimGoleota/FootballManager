@@ -3,6 +3,7 @@ package com.merio.footballManager.features.clubdetailshome.clubmatches.matchdeta
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.models.MatchInfo
 import com.merio.footballManager.domain.data.repository.FMRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,7 +26,7 @@ class MatchDetailsHomeViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
-                    Log.d("1111111111111111111", it.toString())
+                    Log.d(R.string.Network_error.toString(), it.toString())
                 }
                 .doOnSuccess {
                     matchInfoLiveData.value = it

@@ -3,6 +3,7 @@ package com.merio.footballManager.features.leaguehome.table
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.merio.footballManager.R
 import com.merio.footballManager.domain.data.network.models.TableTeam
 import com.merio.footballManager.features.leaguehome.table.usecase.GetTableUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,7 +24,7 @@ class LeagueTableViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
-                    Log.d("Network error", it.toString())
+                    Log.d(R.string.Network_error.toString(), it.toString())
                 }
                 .doOnSuccess {
                     leagueTableLiveData.value = it

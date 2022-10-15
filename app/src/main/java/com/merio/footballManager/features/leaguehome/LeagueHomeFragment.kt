@@ -1,11 +1,13 @@
 package com.merio.footballManager.features.leaguehome
 
-import android.graphics.PorterDuff
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -13,6 +15,7 @@ import com.merio.footballManager.R
 import com.merio.footballManager.databinding.FragmentLeagueHomeBinding
 import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
+import com.merio.footballManager.features.leaguehome.LeagueHomeTabsAdapter.Companion.tabNames
 
 class LeagueHomeFragment : Fragment() {
 
@@ -43,28 +46,33 @@ class LeagueHomeFragment : Fragment() {
 
         viewPager.adapter = LeagueHomeTabsAdapter(requireActivity(), args.countryId)
 
-        val tabsArray = arrayOf(
-            NameTabs.TABLE.value,
-            NameTabs.TOP_SCORERS.value
-        )
-
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabsArray[position]
+            tab.text = tabNames[position]
             when (position) {
                 0 -> tab.setIcon(R.drawable.outline_emoji_events_24)
                 1 -> tab.setIcon(R.drawable.ic_top_scorers_24)
             }
-            tabLayout.getTabAt(0)?.icon
-                ?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
+            tabLayout
+                .getTabAt(0)
+                ?.icon
+                ?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                ContextCompat.getColor(requireContext(), R.color.red), BlendModeCompat.SRC_ATOP
+            )
         }.attach()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                tab?.icon?.setColorFilter(resources.getColor(R.color.red), PorterDuff.Mode.SRC_IN)
+                tab?.icon
+                    ?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                    ContextCompat.getColor(requireContext(), R.color.red), BlendModeCompat.SRC_ATOP
+                )
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                tab?.icon?.setColorFilter(resources.getColor(R.color.black), PorterDuff.Mode.SRC_IN)
+                tab?.icon
+                    ?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                    ContextCompat.getColor(requireContext(), R.color.black), BlendModeCompat.SRC_ATOP
+                )
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {}
@@ -76,15 +84,3 @@ class LeagueHomeFragment : Fragment() {
         _binding = null
     }
 }
-
-enum class NameTabs(val value: String) {
-    TABLE("Table"),
-    TOP_SCORERS("Top scorers"),
-    DETAILS("Details"),
-    MATCHES("Matches"),
-    STATISTICS("Statistics")
-}
-
-
-
-

@@ -41,4 +41,16 @@
     <string name="lose">Lose</string>
     <string name="draw">Draw</string>
     <string name="win">Win</string>
+    <string name="Network_error">Network error</string>
+    <string name="country">Country:</string>
+    <string name="age">Age:</string>
+    <string name="date_of_birth">Date of Birth:</string>
+    <string name="height_cm">Height(cm):</string>
+    <string name="weight_kg">Weight(kg):</string>
+    <string name="unknown">Unknown</string>
+    <string name="matches_played">Matches Played</string>
+    <string name="minutes_played">Minutes Played</string>
+    <string name="goals_overall">Goals Overall</string>
+    <string name="goals_home">Goals Home</string>
+    <string name="goals_away">Goals Away</string>
 </resources>

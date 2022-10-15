@@ -28,8 +28,8 @@ class ClubMatchesAdapter(
     }
 
     override fun onBindViewHolder(holder: ClubMatchesViewHolder, position: Int) {
+        val currentItem = matchesList[position]
         with(holder.binding) {
-            val currentItem = matchesList[position]
             textViewFirstTeam.text = currentItem.home_team.name
             textViewSecondTeam.text = currentItem.away_team.name
             textViewScore.text = currentItem.stats.ft_score
