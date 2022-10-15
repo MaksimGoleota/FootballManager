@@ -68,9 +68,6 @@
         <action
             android:id="@+id/action_clubDetailsHomeFragment_to_clubMatchesFragment"
             app:destination="@id/clubMatchesFragment" />
-        <action
-            android:id="@+id/action_clubDetailsHomeFragment_to_clubStatisticsFragment"
-            app:destination="@id/clubStatisticsFragment" />
     </fragment>
     <fragment
         android:id="@+id/clubDetailsFragment"

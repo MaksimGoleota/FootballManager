@@ -5,17 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.merio.footballManager.R
 import com.merio.footballManager.databinding.FragmentTopScorersBinding
 import com.merio.footballManager.domain.dagger.factory.ViewModelFactory
 import com.merio.footballManager.domain.data.network.api.ENGLAND_ID
 import com.merio.footballManager.domain.data.network.api.LALIGA_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.PREMIER_LEAGUE_SEASON_ID
 import com.merio.footballManager.domain.data.network.api.SPAIN_ID
-import com.merio.footballManager.features.leaguehome.table.LeagueTableAdapter
-import com.merio.footballManager.features.leaguehome.table.LeagueTableFragment
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -53,13 +49,7 @@ class TopScorersFragment : DaggerFragment() {
             SPAIN_ID -> mViewModel.getTopScorers(LALIGA_SEASON_ID)
         }
 
-        val adapter = TopScorersAdapter { playerId ->
-            val bundle = Bundle().apply {
-                putInt(PLAYER_ID, playerId)
-                putInt(COUNTRY_ID, countryId)
-            }
-            findNavController().navigate(R.id.playerDetailsFragment, bundle)
-        }
+        val adapter = TopScorersAdapter()
 
         recyclerViewTopScorers.apply {
             this.adapter = adapter
@@ -86,6 +76,5 @@ class TopScorersFragment : DaggerFragment() {
 
     companion object {
         const val COUNTRY_ID = "countryId"
-        const val PLAYER_ID = "playerId"
     }
 }

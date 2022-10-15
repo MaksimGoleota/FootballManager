@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.merio.footballManager.databinding.CellForTopScorersBinding
 import com.merio.footballManager.domain.data.network.models.TopScorer
 
-class TopScorersAdapter(
-    private val itemClicks: (Int) -> Unit
-) : RecyclerView.Adapter<TopScorersAdapter.TopScorersViewHolder>() {
+class TopScorersAdapter() : RecyclerView.Adapter<TopScorersAdapter.TopScorersViewHolder>() {
 
     class TopScorersViewHolder(val binding: CellForTopScorersBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -35,9 +33,6 @@ class TopScorersAdapter(
             nameClub.text = currentItem.team.team_name
             totalMatches.text = currentItem.matches_played.toString()
             totalNumberOfGoals.text = currentItem.goals.overall.toString()
-        }
-        holder.itemView.setOnClickListener {
-            itemClicks(currentItem.player.player_id)
         }
     }
 

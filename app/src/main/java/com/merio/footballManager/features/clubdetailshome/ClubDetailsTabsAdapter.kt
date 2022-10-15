@@ -51,6 +51,6 @@ class ClubDetailsTabsAdapter(
         const val TEAM_ID = "teamId"
         const val SEASON_ID = "seasonId"
 
-        val tabNames = arrayOf("Details", "Matches", "Statistics")
+        val tabNames = arrayOf("Details", "Matches")
     }
 }

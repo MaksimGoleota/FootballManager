@@ -6,7 +6,6 @@ import com.merio.footballManager.features.clubdetailshome.clubmatches.matchdetai
 import com.merio.footballManager.features.home.HomeFragment
 import com.merio.footballManager.features.leaguehome.table.LeagueTableFragment
 import com.merio.footballManager.features.leaguehome.topscorers.TopScorersFragment
-import com.merio.footballManager.features.playerdetails.PlayerDetailsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -30,9 +29,4 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeMatchDetailsHomeFragment(): MatchDetailsHomeFragment
-
-    @ContributesAndroidInjector
-    abstract fun contributePlayerDetailsFragment(): PlayerDetailsFragment
-
-
 }

@@ -32,9 +32,4 @@ interface FMApiClient {
     fun getTopScorers(
         @Query("season_id") seasonId: Int
     ): Single<TopScorersResponse>
-
-    @GET("soccer/players/{playerId}")
-    fun getPlayerById(
-        @Path("playerId") playerId: Int
-    ): Single<PlayerByIdResponse>
 }
