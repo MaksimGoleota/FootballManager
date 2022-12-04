@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_leagueTableFragment_to_teamsHomeFragment"
             app:destination="@id/clubDetailsHomeFragment" />
+        <action
+            android:id="@+id/action_leagueTableFragment_to_leagueHomeFragment"
+            app:destination="@id/leagueHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/topScorersFragment"
