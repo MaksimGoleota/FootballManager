@@ -18,9 +18,9 @@ class LeagueTableViewModel @Inject constructor(
     val leagueTableLiveData = MutableLiveData<List<TableTeam>>()
     private val compositeDisposable = CompositeDisposable()
 
-    fun getTable(seasonId: Int) {
+    fun getTable(countryId: Int) {
         compositeDisposable.add(
-            getTableUseCase.execute(seasonId)
+            getTableUseCase.execute(countryId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
