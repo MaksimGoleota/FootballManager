@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.merio.footballManager.features.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/actionToLeagueHome"
+            app:destination="@id/leagueHomeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/leagueTableFragment"
+        android:name="com.merio.footballManager.features.leaguehome.table.LeagueTableFragment"
+        android:label="fragment_premier_league_table"
+        tools:layout="@layout/fragment_league_table" >
+        <action
+            android:id="@+id/action_leagueTableFragment_to_teamsHomeFragment"
+            app:destination="@id/clubDetailsHomeFragment" />
+        <action
+            android:id="@+id/action_leagueTableFragment_to_leagueHomeFragment"
+            app:destination="@id/leagueHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topScorersFragment"
+        android:name="com.merio.footballManager.features.leaguehome.topscorers.TopScorersFragment"
+        android:label="TopScorersFragment"
+        tools:layout="@layout/fragment_top_scorers" >
+        <action
+            android:id="@+id/action_topScorersFragment_to_leagueHomeFragment"
+            app:destination="@id/leagueHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leagueHomeFragment"
+        android:name="com.merio.footballManager.features.leaguehome.LeagueHomeFragment"
+        android:label="fragment_tool_bar"
+        tools:layout="@layout/fragment_league_home" >
+        <argument
+            android:name="countryId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_leagueHomeFragment_to_leagueTableFragment"
+            app:destination="@id/leagueTableFragment" />
+        <action
+            android:id="@+id/action_leagueHomeFragment_to_topScorersFragment"
+            app:destination="@id/topScorersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/clubDetailsHomeFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.ClubDetailsHomeFragment"
+        android:label="fragment_teams_home"
+        tools:layout="@layout/fragment_club_details_home" >
+        <argument
+            android:name="countryId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="teamId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_clubDetailsHomeFragment_to_clubDetailsFragment"
+            app:destination="@id/clubDetailsFragment" />
+        <action
+            android:id="@+id/action_clubDetailsHomeFragment_to_clubMatchesFragment"
+            app:destination="@id/clubMatchesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clubDetailsFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.clubdetails.ClubDetailsFragment"
+        android:label="fragment_club_details"
+        tools:layout="@layout/fragment_club_details" >
+        <argument
+            android:name="countryId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="teamId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/clubMatchesFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.clubmatches.ClubMatchesFragment"
+        android:label="fragment_club_matches"
+        tools:layout="@layout/fragment_club_matches" >
+        <action
+            android:id="@+id/action_clubMatchesFragment_to_matchDetailsHomeFragment"
+            app:destination="@id/matchDetailsHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchDetailsHomeFragment"
+        android:name="com.merio.footballManager.features.clubdetailshome.clubmatches.matchdetailshome.MatchDetailsHomeFragment"
+        android:label="MatchDetailsHomeFragment"
+        tools:layout="@layout/fragment_match_details_home" >
+        <argument
+            android:name="matchId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+
+        <argument
+            android:name="teamId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_matchDetailsHomeFragment_to_clubMatchesFragment"
+            app:destination="@id/clubMatchesFragment" />
+
+    </fragment>
+    <activity
+        android:id="@+id/splashScreenActivity"
+        android:name="com.merio.footballManager.features.splashscreen.SplashScreenActivity"
+        android:label="splash_screen_activity"
+        tools:layout="@layout/splash_screen_activity" />
+</navigation>

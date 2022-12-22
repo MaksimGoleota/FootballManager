@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/premierLeagueImageButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/layout_margin_extra_large"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:background="@color/white"
+        android:src="@drawable/premier_league_logo" />
+
+    <ImageButton
+        android:id="@+id/laLigaImageButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/layout_margin_extra_large"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:background="@color/white"
+        android:src="@drawable/logo_laliga_home"/>
+
+</LinearLayout>

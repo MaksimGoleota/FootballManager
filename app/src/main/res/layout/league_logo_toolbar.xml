@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/layout_margin_extra_small"
+    android:orientation="vertical">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints"
+        app:layout_scrollFlags="scroll|enterAlways">
+
+        <ImageButton
+            android:id="@+id/logo"
+            android:layout_width="@dimen/layout_medium"
+            android:layout_height="@dimen/layout_medium"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/premierleague"
+            tools:ignore="MissingConstraints,PrivateResource" />
+
+        <TextView
+            android:id="@+id/leagueName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/premier_league"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/id_text"
+            app:layout_constraintTop_toTopOf="parent" />
+    </Toolbar>
+</com.google.android.material.appbar.AppBarLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_margin_extra_small">5dp</dimen>
+    <dimen name="layout_margin_small">10dp</dimen>
+    <dimen name="layout_margin_medium">16dp</dimen>
+    <dimen name="layout_margin_extra_large">50dp</dimen>
+
+    <dimen name="collapsing_toolbar_small">30dp</dimen>
+    <dimen name="collapsing_toolbar_medium">50dp</dimen>
+    <dimen name="collapsing_toolbar_extra_large">80dp</dimen>
+
+    <dimen name="layout_extra_small">33dp</dimen>
+    <dimen name="layout_small">40dp</dimen>
+    <dimen name="layout_medium">48dp</dimen>
+    <dimen name="layout_large">70dp</dimen>
+
+    <dimen name="textSize_extra_small">14sp</dimen>
+    <dimen name="textSize_small">18sp</dimen>
+    <dimen name="textSize_medium">21sp</dimen>
+    <dimen name="textSize_large">30sp</dimen>
+
+    <dimen name="layout_divider_height">1dp</dimen>
+</resources>

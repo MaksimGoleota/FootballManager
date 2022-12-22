@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ProgressBar
+        android:id="@+id/progressBarTopScorers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/spinner_ring"
+        android:indeterminateOnly="true"
+        android:theme="@style/CircularProgress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/positionHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/layout_margin_extra_small"
+        android:text="@string/position"
+        android:textColor="@color/header_color"
+        android:textSize="@dimen/textSize_extra_small"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewTopScorers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/playersHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin_extra_small"
+        android:gravity="center"
+        android:padding="@dimen/layout_margin_extra_small"
+        android:text="@string/players"
+        android:textColor="@color/header_color"
+        android:textSize="@dimen/textSize_extra_small"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/totalMatchesHeader"
+        app:layout_constraintStart_toEndOf="@+id/positionHeader"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/totalMatchesHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/layout_margin_small"
+        android:gravity="right"
+        android:padding="@dimen/layout_margin_extra_small"
+        android:text="@string/matches"
+        android:textColor="@color/header_color"
+        android:textSize="@dimen/textSize_extra_small"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/totalGoalsHeader"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/totalGoalsHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/layout_margin_extra_small"
+        android:text="@string/goals"
+        android:textColor="@color/header_color"
+        android:textSize="@dimen/textSize_extra_small"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewTopScorers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/splitLine"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/layout_divider_height"
+        android:background="@color/divider_color"
+        app:layout_constraintBottom_toBottomOf="@id/totalGoalsHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTopScorers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playersHeader"
+        tools:listitem="@layout/cell_for_top_scorers" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
